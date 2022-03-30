@@ -21,7 +21,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../login-system/css/fontawesome-free-6.0.0-web/css/all.css">
-    <link href="gamestyle.css" rel="stylesheet">
+    <link href="./gamestyle.css" rel="stylesheet">
     <link rel="stylesheet" href="./header.css" />
     <header>
         <div class="header-wrapper">
@@ -38,13 +38,11 @@ if (session_status() == PHP_SESSION_NONE) {
                             <h3 class="nav-titles">Products</h3>
                         </li>
                     </a>
-                    <?php
-                    if (isset($_SESSION["useruid"])) {
-                        echo "<a class='link-styles' href='../shopping_cart.php'><li class='list-styles'><h3 class='nav-titles'>Cart</h3></li></a>";
-                    } else {
-                        echo "<a class='link-styles' href='../login-system/login-register.php'><li class='list-styles'><h3 class='nav-titles'>Cart</h3></li></a>";
-                    }
-                    ?>
+                    <a class="link-styles" href="../shopping_cart.php">
+                        <li class="list-styles">
+                            <h3 class="nav-titles">Cart</h3>
+                        </li>
+                    </a>
                     <a class="link-styles" href="../php/admin.inc.php">
                         <li class="list-styles">
                             <h3 class="nav-titles">Settings</h3>
@@ -55,6 +53,11 @@ if (session_status() == PHP_SESSION_NONE) {
                             <h3 class="nav-titles">Forum</h3>
                         </li>
                     </a>
+                    <a class="link-styles" href="../friendList.php">
+                        <li class="list-styles">
+                            <h3 class="nav-titles">Friends</h3>
+                        </li>
+                    </a>
                     <a class="link-styles" href="./game.php">
                         <li class="list-styles">
                             <h3 class="nav-titles">Game</h3>
@@ -62,7 +65,6 @@ if (session_status() == PHP_SESSION_NONE) {
                     </a>
                     <?php
                     if (isset($_SESSION["useruid"])) {
-                        echo "<a class='link-styles' href='../friendList.php'><li class='list-styles'><h3 class='nav-titles'>Friends</h3></li></a>";
                         echo "<a class='link-styles' href='../login-system/profile/profile.php'><li class='list-styles'><h3 class='nav-titles'>Profile</h3></li></a>";
                     } else {
                         echo "<a class='link-styles' href='../login-system/login-register.php'><li class='list-styles'><h3 class='nav-titles'>Login</h3></li></a>";
@@ -79,13 +81,11 @@ if (session_status() == PHP_SESSION_NONE) {
                     <h3 class="nav-titles">Products</h3>
                 </li>
             </a>
-            <?php
-            if (isset($_SESSION["useruid"])) {
-                echo "<a class='link-styles' href='../shopping_cart.php'><li class='list-styles'><h3 class='nav-titles'>Cart</h3></li></a>";
-            } else {
-                echo "<a class='link-styles' href='../login-system/login-register.php'><li class='list-styles'><h3 class='nav-titles'>Cart</h3></li></a>";
-            }
-            ?>
+            <a class="link-styles" href="../shopping_cart.php">
+                <li class="list-styles">
+                    <h3 class="nav-titles">Cart</h3>
+                </li>
+            </a>
             <a class="link-styles" href="../login-system/php/admin.inc.php">
                 <li class="list-styles">
                     <h3 class="nav-titles">Settings</h3>
@@ -96,6 +96,11 @@ if (session_status() == PHP_SESSION_NONE) {
                     <h3 class="nav-titles">Forum</h3>
                 </li>
             </a>
+            <a class="link-styles" href="../friendList.php">
+                <li class="list-styles">
+                    <h3 class="nav-titles">Friends</h3>
+                </li>
+            </a>
             <a class="link-styles" href="./game.php">
                 <li class="list-styles">
                     <h3 class="nav-titles">Game</h3>
@@ -103,7 +108,6 @@ if (session_status() == PHP_SESSION_NONE) {
             </a>
             <?php
             if (isset($_SESSION["useruid"])) {
-                echo "<a class='link-styles' href='../friendList.php'><li class='list-styles'><h3 class='nav-titles'>Friends</h3></li></a>";
                 echo "<a class='link-styles' href='../login-system/profile/profile.php'><li class='list-styles'><h3 class='nav-titles'>Profile</h3></li></a>";
             } else {
                 echo "<a class='link-styles' href='../login-system/login-register.php'><li class='list-styles'><h3 class='nav-titles'>Login</h3></li></a>";

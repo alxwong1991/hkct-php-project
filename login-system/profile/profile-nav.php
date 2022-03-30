@@ -28,14 +28,14 @@
                     <h3>Forum</h3>
                 </li>
             </a>
-            <a href="../../game/game.php">
-                <li>
-                    <h3>Game</h3>
-                </li>
-            </a>
             <a href="../../friendList.php">
                 <li>
                     <h3>Friends</h3>
+                </li>
+            </a>
+            <a href="../../game/game.php">
+                <li>
+                    <h3>Game</h3>
                 </li>
             </a>
             <?php
@@ -68,14 +68,14 @@
                 <h3 class="nav-titles">Forum</h3>
             </li>
         </a>
-        <a class="link-styles" href="../../game/game.php">
-            <li class="list-styles">
-                <h3 class="nav-titles">Game</h3>
-            </li>
-        </a>
         <a class="link-styles" href="../../friendList.php">
             <li class="list-styles">
                 <h3 class="nav-titles">Friends</h3>
+            </li>
+        </a>
+        <a class="link-styles" href="../../game/game.php">
+            <li class="list-styles">
+                <h3 class="nav-titles">Game</h3>
             </li>
         </a>
         <?php

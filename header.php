@@ -37,14 +37,10 @@ if (session_status() == PHP_SESSION_NONE) {
                     <h3 class="nav-titles">Forum</h3>
                 </li>
             </a>
-            <a class="link-styles" href="./game/game.php">
-                <li class="list-styles">
-                    <h3 class="nav-titles">Game</h3>
-                </li>
-            </a>
             <?php
             if (isset($_SESSION["useruid"])) {
                 echo "<a class='link-styles' href='./friendList.php'><li class='list-styles'><h3 class='nav-titles'>Friends</h3></li></a>";
+                echo "<a class='link-styles' href='./game/game.php'><li class='list-styles'><h3 class='nav-titles'>Game</h3></li></a>";
             }
             ?>
             <?php
@@ -81,14 +77,10 @@ if (session_status() == PHP_SESSION_NONE) {
                 <h3 class="nav-titles">Forum</h3>
             </li>
         </a>
-        <a class="link-styles" href="./game/game.php">
-            <li class="list-styles">
-                <h3 class="nav-titles">Game</h3>
-            </li>
-        </a>
         <?php
         if (isset($_SESSION["useruid"])) {
             echo "<a class='link-styles' href='./friendList.php'><li class='list-styles'><h3 class='nav-titles'>Friends</h3></li></a>";
+            echo "<a class='link-styles' href='./game/game.php'><li class='list-styles'><h3 class='nav-titles'>Game</h3></li></a>";
             echo "<a class='link-styles' href='./login-system/profile/profile.php'><li class='list-styles'><h3 class='nav-titles'>Profile</h3></li></a>";
         } else {
             echo "<a class='link-styles' href='./login-system/login-register.php'><li class='list-styles'><h3 class='nav-titles'>Login</h3></li></a>";
