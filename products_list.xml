@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<products>
+    <product>
+        <pid>0</pid>
+        <title> New Season cotton hoodie</title>
+        <description>Estimated delivery  Feb 18 - Mar 1</description>
+        <price>10600</price>
+        <img>"images/p1.jpeg"</img>
+    </product>
+    <product>
+        <pid>1</pid>
+        <title>brushed gradient-effect jumper</title>
+        <description>Estimated delivery  Feb 17 - Feb 22</description>
+        <price>10300</price>
+        <img>"images/p2.jpeg"</img>
+    </product>
+    <product>
+        <pid>2</pid>
+        <title>x Disney Donald Duck sweatshirt</title>
+        <description>Estimated delivery  Feb 18 - Feb 22</description>
+        <price>9700</price>
+        <img>"images/p3.jpeg"</img>
+    </product>
+    <product>
+        <pid>3</pid>
+        <title>2Tiger varsity logo sweatshirt</title>
+        <description>Estimated delivery  Feb 18 - Mar 1</description>
+        <price>9800</price>
+        <img>"images/p4.jpeg"</img>
+    </product>
+
+    <product>
+        <pid>4</pid>
+        <title> New Season cotton hoodie</title>
+        <description>Estimated delivery  Feb 18 - Mar 1</description>
+        <price>10600</price>
+        <img>"images/p1.jpeg"</img>
+    </product>
+    <product>
+        <pid>5</pid>
+        <title>brushed gradient-effect jumper</title>
+        <description>Estimated delivery  Feb 17 - Feb 22</description>
+        <price>10,300</price>
+        <img>"images/p2.jpeg"</img>
+    </product>
+    <product>
+        <pid>6</pid>
+        <title>x Disney Donald Duck sweatshirt</title>
+        <description>Estimated delivery  Feb 18 - Feb 22</description>
+        <price>9700</price>
+        <img>"images/p3.jpeg"</img>
+    </product>
+    <product>
+        <pid>7</pid>
+        <title>2Tiger varsity logo sweatshirt</title>
+        <description>Estimated delivery  Feb 18 - Mar 1</description>
+        <price>9800</price>
+        <img>"images/p4.jpeg"</img>
+    </product>
+</products>

@@ -1,0 +1,41 @@
+.btn-outline-success {
+  color: darkgreen;
+  background-color: azure;
+}
+
+.btn-success {
+  color: forestgreen;
+  background-image: url(gameimages/background.jpg);
+  background-repeat: none;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.btn-success:hover {
+  background-image: url(gameimages/images.jpg);
+  color: cadetblue;
+}
+
+.carder {
+  background-image: url(gameimages/dandelion.jpg);
+  background-repeat: none;
+  background-size: center;
+  background-position: top;
+}
+
+#back {
+  background-image: url(gameimages/clover.jpg);
+}
+
+.tiles {
+  background-position: center;
+  background-image: url(gameimages/background.jpg);
+}
+
+.tile {
+  background-image: url(gameimages/images.jpg);
+}
+
+.welcome {
+  background-image: url(gameimages/clover.webp);
+}

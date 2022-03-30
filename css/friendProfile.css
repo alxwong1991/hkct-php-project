@@ -1,0 +1,16 @@
+.bg-color-friend-profile {
+  background-color: #42474f;
+  height: 100vh;
+}
+
+.profile-image {
+    border-radius: 50%;
+    max-width: 20rem;
+    margin-top: -50px;
+    border: 3px solid;
+  }
+
+.friend-btns {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,7 @@
+To use xml
+
+chmod -R 0777 /Applications/XAMPP/xamppfiles/htdocs
+
+To use mysql xammp
+
+sudo killall mysqld
