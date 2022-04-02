@@ -1,5 +1,5 @@
 <?php
-session_start();
+ require '../php/init.inc.php';
 ?>
 
 <!DOCTYPE html>
