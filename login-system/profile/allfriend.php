@@ -1,8 +1,5 @@
-
-<section class="tabs">
-    <h1>All User List</h1>
-    <?php
-//  require '../php/init.inc.php';
+<?php
+ require '../php/init.inc.php';
  if(isset($_SESSION['userid']) && isset($_SESSION['useremail'])){
     $user_data = $user_obj->find_user_by_id($_SESSION['userid']);
     if($user_data ===  false){
@@ -13,7 +10,7 @@
     $all_users = $user_obj->all_users($_SESSION['userid']);
 }
 else{
-    header('Location: ../php/logout.inc.php');
+    header('Location:profile.php?error=m1');
     exit;
 }
 
@@ -64,4 +61,3 @@ else{
 </body>
 </html>
 <!-- <div class="user_img"><img src="./upload/profile'.$row->usersId.'" alt="Profile image"></div> -->
-</section>
