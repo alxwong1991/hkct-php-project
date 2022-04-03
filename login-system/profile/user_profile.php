@@ -59,12 +59,14 @@ $get_frnd_num = $frnd_obj->get_all_friends($_SESSION['userid'], false);
             <nav>
                 <ul>
                     <li><a href="profile.php" rel="noopener noreferrer">Home</a></li>
-                    <li><a href="notifications.php" rel="noopener noreferrer">Requests<span
-                                class="badge <?php
-                                                                                                            if ($get_req_num > 0) {
-                                                                                                                echo 'redBadge';
-                                                                                                            }
-                                                                                                            ?>"><?php echo $get_req_num; ?></span></a></li>
+                    <li><a href="notifications.php" rel="noopener noreferrer">Requests
+                            <span class="badge 
+                        <?php if ($get_req_num > 0) {
+                            echo 'redBadge';
+                        } ?>">
+                                <?php echo $get_req_num; ?>
+                            </span>
+                        </a></li>
                     <li><a href="friends.php" rel="noopener noreferrer">Friends<span
                                 class="badge"><?php echo $get_frnd_num; ?>
                             </span></a></li>
