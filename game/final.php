@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php include "../login-system/php/dbh.inc.php" ?>
 
 <?php
@@ -26,9 +25,8 @@ require './header.php'
                         ?>
                     </h2>
                     </p>
-                    <a role="button" class="btn btn-outline-success" href="game.php"><i><b class="fw-light">
+                    <a role="button" class="btn btn-outline-success" href="./game.php"><i><b class="fw-light">
                                 Restart</b></i></a>
-                    <?php session_destroy(); ?>
                 </div>
             </div>
         </div>
