@@ -18,9 +18,14 @@
                     <h3>Cart</h3>
                 </li>
             </a>
-            <a href="../php/admin.inc.php">
+            <!-- <a href="../php/admin.inc.php">
                 <li>
                     <h3>Settings</h3>
+                </li>
+            </a> -->
+            <a href="../php/admin.inc.php">
+                <li>
+                    <h3>Admin</h3>
                 </li>
             </a>
             <a href="../../forum.php">
@@ -58,9 +63,14 @@
                 <h3 class="nav-titles">Cart</h3>
             </li>
         </a>
-        <a class="link-styles" href="../php/admin.inc.php">
+        <!-- <a class="link-styles" href="../php/admin.inc.php">
             <li class="list-styles">
                 <h3 class="nav-titles">Settings</h3>
+            </li>
+        </a> -->
+        <a class="link-styles" href="../php/admin.inc.php">
+            <li class="list-styles">
+                <h3 class="nav-titles">Admin</h3>
             </li>
         </a>
         <a class="link-styles" href="../../forum.php">

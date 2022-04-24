@@ -44,9 +44,14 @@ if (session_status() == PHP_SESSION_NONE) {
                             <h3 class="nav-titles">Cart</h3>
                         </li>
                     </a>
-                    <a class="link-styles" href="../php/admin.inc.php">
+                    <!-- <a class="link-styles" href="../php/admin.inc.php">
                         <li class="list-styles">
                             <h3 class="nav-titles">Settings</h3>
+                        </li>
+                    </a> -->
+                    <a class="link-styles" href="../php/admin.inc.php">
+                        <li class="list-styles">
+                            <h3 class="nav-titles">Admin</h3>
                         </li>
                     </a>
                     <a class="link-styles" href="../forum.php">
@@ -87,9 +92,14 @@ if (session_status() == PHP_SESSION_NONE) {
                     <h3 class="nav-titles">Cart</h3>
                 </li>
             </a>
-            <a class="link-styles" href="../login-system/php/admin.inc.php">
+            <!-- <a class="link-styles" href="../login-system/php/admin.inc.php">
                 <li class="list-styles">
                     <h3 class="nav-titles">Settings</h3>
+                </li>
+            </a> -->
+            <a class="link-styles" href="../login-system/php/admin.inc.php">
+                <li class="list-styles">
+                    <h3 class="nav-titles">Admin</h3>
                 </li>
             </a>
             <a class="link-styles" href="../forum.php">
