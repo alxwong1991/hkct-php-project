@@ -41,6 +41,7 @@ if (isset($_GET["error"])) {
     $sql = "SELECT * FROM users;";
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
+    $rowcount = mysqli_num_rows($result);
     ?>
 
     <div class="wrapper">
@@ -294,7 +295,6 @@ if (isset($_GET["error"])) {
                                     if ($num > 0) {
                                         while ($data = mysqli_fetch_assoc($result)) {
                                             echo "
-                                            
                                                 <tr>
                                                 <th><span class='custom-checkbox'>
                                                         <input type='checkbox' id='checkbox1' name='option[]' value='1'>
@@ -315,7 +315,6 @@ if (isset($_GET["error"])) {
                                                 </a>
                                             </th>
                                         </tr>
-                                        
                                                 ";
                                         }
                                     }
@@ -415,7 +414,10 @@ if (isset($_GET["error"])) {
                             </table>
 
                             <div class="clearfix">
-                                <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
+                                <?php
+                                echo "<div class='hint-text'>showing <b>" . $rowcount . "</b> out of <b>" . $rowcount . "</b></div>"
+                                ?>
+                                <!-- <div class='hint-text'>showing <b>5</b> out of <b>25</b></div> -->
                                 <ul class="pagination">
                                     <li class="page-item disabled"><a href="#">Previous</a></li>
                                     <li class="page-item "><a href="#" class="page-link">1</a></li>
