@@ -7,9 +7,6 @@ require "../login-system/php/dbh.inc.php";
 // Table name
 $tbname = "cart_list";
 
-print_r($_POST);
-echo $_POST["t"];
-echo "<br>";
 
 // define variable
 $total = $_POST["t"];
@@ -30,7 +27,6 @@ if (empty($fullname) || empty($orderDestination) || empty($contactNumber)) {
 
 
 
-
 // SQL INSERT RECORD 
 
 session_start();
@@ -38,32 +34,48 @@ session_start();
 $userid = $_SESSION['userid'];
 
 //  INSERT DATA to ORDER table 
-$sql = "INSERT INTO `order` (`orderId`, `usersId`, `fullname`, `price`, `orderDestination`, `contactNumber`, `state`) 
-VALUES (NULL, '$userid',  '$fullname',  '$total', '$orderDestination','$contactNumber',NULL);";
-echo "\$sql=" . $sql . "<br>";
+$sql = "INSERT INTO `order` (`o_id`, `usersId`, `o_name`, `o_price`, `o_destination`, `o_contactNumber`) 
+VALUES (NULL, '$userid',  '$fullname',  '$total', '$orderDestination','$contactNumber');";
+
+// Execute sql
+$sql_result = $conn->query($sql);
+
+
+
+// UPDATE DATA to CART_LIST table
+$sql = "UPDATE cart_list SET `c_state`='paid' WHERE `usersId` ='$userid';";
+
 
 // Execute sql
 $sql_result = $conn->query($sql);
 
 
 // UPDATE DATA to CART_LIST table
-$sql = "UPDATE cart_list SET `state`='paid' WHERE `usersId` ='$userid' ";
-echo "\$sql=" . $sql . "<br>";
+$sql ="SELECT * FROM `cart_list`,`product`, `users`
+
+WHERE `product`.`p_id` = `cart_list`.`p_id`
+
+AND `users`.`usersId` = `cart_list`.`usersId`
+
+AND `users`.`usersId` = $userid AND `cart_list`.`c_state` = 'paid';";
 
 // Execute sql
 $sql_result = $conn->query($sql);
 
-$last_id = $conn->insert_id;
+while ($row = mysqli_fetch_array($sql_result)) {
+    $q = ($row["c_quantity"]);
+    $pid = ($row["p_id"]);
+    $s = ($row["p_stock"]);
 
-if ($sql_result === TRUE) {
-    $message = "User account created! (id=" . $last_id . ")";
-    echo $message . "<br>";
-} else {
-    $message = "User account create fail!<br>";
-    echo $message . "<br>";
+    $s -=$q ;
+
+    $sSql = "UPDATE `product` SET `p_stock` = $s WHERE `p_id` =  $pid;";
+    $sSql_result = $conn->query($sSql);
+
+
 }
 
-// // return
+ // return
 echo "<script>";
 echo "window.location.href='../index.php?m=" . $message . "';";
 echo "</script>";

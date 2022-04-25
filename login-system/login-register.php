@@ -118,9 +118,6 @@ if (isset($_GET["error"])) {
                         </div>
                         <button type="submit" name="submit">Sign in</button>
                         <p>
-                            <b> Forget password? </b>
-                        </p>
-                        <p>
                             <span> Don't have an account? </span>
                             <b onclick="toggle()" class="pointer"> Sign up here </b>
                         </p>

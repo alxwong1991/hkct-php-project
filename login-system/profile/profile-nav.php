@@ -13,9 +13,9 @@
                 </li>
             </a>
 
-            <a href="../../shopping_cart.php">
+            <a href="../../shopping_bag.php">
                 <li>
-                    <h3>Cart</h3>
+                    <h3>Bag</h3>
                 </li>
             </a>
             <!-- <a href="../php/admin.inc.php">
@@ -58,9 +58,9 @@
                 <h3 class="nav-titles">Products</h3>
             </li>
         </a>
-        <a class="link-styles" href="../../shopping_cart.php">
+        <a class="link-styles" href="../../shopping_bag.php">
             <li class="list-styles">
-                <h3 class="nav-titles">Cart</h3>
+                <h3 class="nav-titles">Bag</h3>
             </li>
         </a>
         <!-- <a class="link-styles" href="../php/admin.inc.php">

@@ -94,156 +94,103 @@
 
                 <?php
 
+                if(!isset($_GET['pq'])){
+                    $_GET['pq'] = 0;
+                }
 
-
+                // Get user ID
                 $userid = $_SESSION['userid'];
-
-
-
 
                 // Connect database
                 require "./login-system/php/dbh.inc.php";
-                // Table name
-                $tbname = "cart_list";
+                $c_t = 0 ;
+                $pq = $_GET["pq"];
+                if (isset($_GET["pid"])) {
+                    $pid = $_GET["pid"];
+                
+                 // SQL INSERT RECORD         
+                 $sql = "SELECT * FROM `product` WHERE `p_id` = $pid;";
+                 $sql_result = $conn->query($sql);
+                 while ($row = mysqli_fetch_assoc($sql_result)) {
+                    $c_t = ($pq * $row["p_price"]); 
+                 }
 
-                // Collect form data after submitting ( in shopping_datail.php ) form with method="post"
-                $id = -1;
 
-                //  Interprets an XML file into ( an object ) 
-                $products_xml = simplexml_load_file('products_list.xml');
+                // SQL INSERT RECORD         
+                $sql = "INSERT INTO `cart_list` (`usersId`, `c_Id`, `c_state`, `p_id`, `c_quantity`, `c_total`) VALUES ($userid , NULL, 'inCart', $pid, $pq, $c_t);";
 
+                // Execute sql
+                $sql_result = $conn->query($sql);
+                $last_id = $conn->insert_id;
 
-                if (isset($_POST["pid"])) {
-                    $id = $_POST["pid"];
                 }
-
-
-                // Get XML content according to pid
-                // SQL INSERT RECORD
-                foreach ($products_xml->product as $child) {
-                    if ($id == $child->pid) {
-                        $pid = $child->pid;
-                        $title = $child->title;
-                        $description = $child->description;
-                        $price = $child->price;
-                        $img = $child->img;
-                        $id++;
-                        $id = $child->id;
-
-                        // echo "<div class='col-12 col-sm-12 col-md-7 '>";
-                        // echo "<img src=" . $img . " class='card-img-top ' alt='" . $title . "'>";
-                        // echo "</div>";
-
-                        // // modal-header
-                        // echo "<div class='modal-header p-5 pb-4 border-bottom-0'>";
-                        // // $title
-                        // echo "<div><h2 class='fw-bold mb-0' style='font-size: 3rem; color: rgba(163, 16, 25, 0.86)'>$title</h2></div>";
-                        // echo '</div>';
-
-                        // // modal-body
-                        // echo "<div class='modal-body p-5 pt-0'>";
-                        // // $price
-                        // echo "<h5 class='fw-bold mb-4' style=' color: rgba(163, 16, 25, 0.86)'>HK$ " . $price . "</h2>";
-                        // // $description
-                        // echo "<h6 class='fw-bold mb-0' style='color: rgba(163, 16, 25, 0.86)'>$description</h6>";
-                        // // AVAILABLE
-                        // echo "<h8 class='fw-bold mb-0' style='color: rgba(163, 16, 25, 0.86)'>AVAILABLE</h6>";
-                        // echo "</br>";
-                        // echo "<h8 class='fw-bold mb-0' style='color: rgba(163, 16, 25, 0.86)'>Your selection is available for immediate purchase online</h6>";
-                        // echo "</div>";
-
-
-
-                        // SQL INSERT RECORD         
-                        $sql = "INSERT INTO `cart_list` (`usersId`, `cart_Item_Id`, `cart_Item`, `price`,  `state`) VALUES ('$userid', NULL, '$title', '$price', 'inCart');";
-
-                        // Execute sql
-                        $sql_result = $conn->query($sql);
-                        $last_id = $conn->insert_id;
-
-                        // // Result
-                        // if ($sql_result === TRUE) {
-                        //     echo "Record insertion successful!!<br>";
-                        //     echo "The last id is " . $last_id . "<br>";
-                        // } else {
-                        //     echo "Record insert failure !!<br>";
-                        // }
-                    }
-                }
-
                 ?>
 
-                <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-bs-ride="carousel" style="padding-right: 0;padding-left:0;">
+                <!-- Bootstrap Carousel  -->
+                <!-- Optimizing bootstrap carousel with PHP array will manage Carousel item quantity more efficiently. -->
+                <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" style="padding-right: 0;padding-left:0;">
+
                     <div class="carousel-inner">
-
+                        <!--  Carousel item start ( Class = "active" )  -->
                         <div class="carousel-item active">
-                            <img src="https://i.imgur.com/3Ixj102.jpg" class="d-block w-100" alt="...">
+                            <img src="https://i.imgur.com/3Ixj102.jpg" class="d-block w-100">
                             <div class="carousel_container ">
-
                                 <h1>READY-TO-WEAR</h1>
-                                <p>2022
-                                </p>
-
-
+                                <p>2022</p>
                             </div>
                         </div>
+                        <?php
+                        // Carousel item array 
+                        $carousel_image = array();
+                        $carousel_image[0] = "https://i.imgur.com/H86ltAL.jpg";
+                        $carousel_image[1] = "https://i.imgur.com/5vVEDkc.jpg";
+                        $arrlength = count($carousel_image);
 
-                        <div class="carousel-item">
-                            <img src="https://i.imgur.com/HOov1tX.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel_container ">
-
+                        for ($x = 0; $x < $arrlength; $x++) {
+                            echo "<div class=\"carousel-item\">";
+                            echo "<img src=" . $carousel_image[$x] . "class=\"d-block w-100\">";
+                            echo "<div class=\"carousel_container\">
                                 <h1>READY-TO-WEAR</h1>
-                                <p>2022
-                                </p>
+                                <h1>2022</h1></div>";
+                            echo  "</div>";
+                        }
+                        ?>
 
-
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <img src="https://i.imgur.com/vrZiYK2.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel_container ">
-
-                                <h1>READY-TO-WEAR</h1>
-                                <p>2022
-                                </p>
-
-
-                            </div>
-                        </div>
                     </div>
                 </div>
-
-
 
 
                 <div class="position-relative overflow-hidden p-3  m-md-1 text-center">
 
                     <div class="col-md-5 p-lg-5 mx-auto my-5">
-                        <h1 class="display-4 fw-normal">Shopping cart</h1>
+                        <h1 class="display-4 fw-normal">Shopping Bag</h1>
                         <p class="lead fw-normal">
                             <?php
 
                             // Connect database
                             require "./login-system/php/dbh.inc.php";
-                            // Table name
-                            $tbname = "cart_list";
+
 
                             // SQL INSERT RECORD  
-                            $sql = "select SUM(price) AS total from $tbname WHERE usersId = '$userid' AND state = 'inCart';";
+                            $sql = "SELECT SUM(`cart_list`.`c_total`) AS total FROM `cart_list`,`product`, `users`
+
+                            WHERE `product`.`p_id` = `cart_list`.`p_id`
+                            
+                            AND `users`.`usersId` = `cart_list`.`usersId`
+                            
+                            AND `users`.`usersId` = $userid AND `cart_list`.`c_state` = 'inCart';";
                             // Execute sql
                             $sql_result = $conn->query($sql);
 
-                        
-
                             while ($row = mysqli_fetch_assoc($sql_result)) {
-                                if ( $row["total"]  == 0) {
+                                if ($row["total"]  == 0) {
                                     echo "<div><h2 class='fw-bold mb-0 ' style=' font-size: 3rem; color: rgba(163, 16, 25, 0.86)'>Empty</h2></div>";
                                 } else {
                                     echo "<div><h2 class='fw-bold mb-0 ' style=' font-size: 3rem; color: rgba(163, 16, 25, 0.86)'>total HK$ " . $row["total"] . "</h2></div>";
                                 }
-                            }
 
+                                $t =  $row["total"];
+                            }
 
                             ?></p>
                         <a class="btn btn-outline-secondary" href="index.php">CONTINUE SHOPPING</a>
@@ -261,9 +208,11 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Cart Item ID</th>
-                                    <th>Cart Item </th>
-                                    <th>Price</th>
+                                    <th>Cart Item</th>
+                                    <th>Brand</th>
+                                    <th>Size</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
                                     <th>Remove</th>
                                 </tr>
                             </thead>
@@ -282,29 +231,32 @@
                                 $sl = 0;
 
                                 // SQL SELECT RECORD  
-                                $sql = "select * from $tbname WHERE usersId = '$userid' AND state = 'inCart';";
+                                $sql = "SELECT * FROM `cart_list`,`product`, `users`
+
+                                WHERE `product`.`p_id` = `cart_list`.`p_id`
+                                
+                                AND `users`.`usersId` = `cart_list`.`usersId`
+                                
+                                AND `users`.`usersId` = $userid  AND `cart_list`.`c_state` = 'inCart';";
                                 // Execute sql
                                 $sql_result = $conn->query($sql);
                                 while ($row = mysqli_fetch_array($sql_result)) {
                                     $sl++;
+                                    $cid = $row['c_id'];
                                 ?>
                                     <tr>
                                         <td><?php echo $sl; ?></td>
-                                        <td><?php echo $row['cart_Item_Id']; ?></td>
-                                        <td><?php echo $row['cart_Item']; ?></td>
-                                        <td><?php echo "$" . $row['price']; ?></td>
+                                        <td><?php echo $row['p_title']; ?></td>
+                                        <td><?php echo $row['p_brand']; ?></td>
+                                        <td><?php echo $row['p_size']; ?></td>
+                                        <td><?php echo $row['c_quantity']; ?></td>
+                                        <td><?php echo "$" . $row['c_total']; ?></td>
 
                                         <?php
 
-                                        $cid = $row['cart_Item_Id'];
-
-
                                         echo "<td style=\"text-align:center;\"><a href=\"./php/remove_process.php?cid=$cid\"><img src=\"./images/icon-delete.png\"/></a></td>";
 
-
-                                        $t += $row["price"];
                                         ?>
-
 
                                     </tr>
                                 <?php }
@@ -318,18 +270,32 @@
 
                         echo "<form action=\"pay.php\" method=\"POST\">";
 
-                        // $price
-                        // SQL SELECT RECORD  
-                        $sql = "select SUM(price) AS total from $tbname WHERE usersId = '$userid' AND state = 'inCart';";
+                        // Connect database
+                        require "./login-system/php/dbh.inc.php";
+
+
+                        // SQL INSERT RECORD  
+                        $sql = "SELECT SUM(`cart_list`.`c_total`) AS total FROM `cart_list`,`product`, `users`
+
+WHERE `product`.`p_id` = `cart_list`.`p_id`
+
+AND `users`.`usersId` = `cart_list`.`usersId`
+
+AND `users`.`usersId` = $userid AND `cart_list`.`c_state` = 'inCart';";
                         // Execute sql
                         $sql_result = $conn->query($sql);
 
+
+
                         while ($row = mysqli_fetch_assoc($sql_result)) {
-                            if ( $row["total"]  == 0) {
+                            if ($row["total"]  == 0) {
                                 echo "<div><h2 class='fw-bold mb-0 ' style='text-align:right;  font-size: 3rem; color: rgba(163, 16, 25, 0.86)'>total HK$ 0</h2></div>";
                             } else {
                                 echo "<div><h2 class='fw-bold mb-0 ' style='text-align:right;  font-size: 3rem; color: rgba(163, 16, 25, 0.86)'>total HK$ " . $row["total"] . "</h2></div>";
                             }
+
+
+                            $t =  $row["total"];
                         }
 
                         // CHECK OUT BTN

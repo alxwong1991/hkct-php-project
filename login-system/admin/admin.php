@@ -211,8 +211,7 @@ if (isset($_GET["error"])) {
                                         </li>
                                         <li class="dropdown nav-item">
                                             <a class="nav-link" href="#" data-toggle="dropdown">
-                                                <img src="img/user.jpg" style="width:40px; border-radius:50%;" />
-                                                <span class="xp-user-live"></span>
+                                                <span class="material-icons">manage_accounts</span>
                                             </a>
                                             <ul class="dropdown-menu small-menu">
                                                 <li><a href="#">
@@ -559,11 +558,9 @@ if (isset($_GET["error"])) {
             <!----footer-design------------->
 
             <footer class="footer">
-                <div class="container-fluid">
-                    <div class="footer-in">
-                        <p class="mb-0">&copy 2021 Vishweb Design . All Rights Reserved.</p>
-                    </div>
-                </div>
+                <?php
+                require '../../footer.php'
+                ?>
             </footer>
 
 
@@ -577,12 +574,6 @@ if (isset($_GET["error"])) {
 
     <!-------complete html----------->
 
-
-
-
-
-
-    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../../js/jquery-3.3.1.slim.min.js"></script>
     <script src="../../js/popper.min.js"></script>

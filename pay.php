@@ -101,11 +101,15 @@
                                 <?php
                                 // Connect database
                                 require "./login-system/php/dbh.inc.php";
-                                // Table name
-                                $tbname = "cart_list";
 
                                 // SQL INSERT RECORD  
-                                $sql = "select SUM(price) AS total from $tbname WHERE usersId = '$userid' AND state = 'inCart';";
+                                $sql = "SELECT SUM(`cart_list`.`c_total`) AS total FROM `cart_list`,`product`, `users`
+
+                                WHERE `product`.`p_id` = `cart_list`.`p_id`
+                                
+                                AND `users`.`usersId` = `cart_list`.`usersId`
+                                
+                                AND `users`.`usersId` = $userid AND `cart_list`.`c_state` = 'inCart';";
                                 // Execute sql
                                 $sql_result = $conn->query($sql);
 
