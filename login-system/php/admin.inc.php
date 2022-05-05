@@ -15,7 +15,7 @@
 session_start();
 
 $value = $_SESSION["useruid"];
-$admin = "Louie9";
+$admin = "admin";
 
 if ($value == $admin) {
   echo " hello" . $_SESSION["useruid"];

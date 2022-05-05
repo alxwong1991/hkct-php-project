@@ -2,20 +2,20 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/profile-update.css">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/profile-update.css">
+    <title>Document</title>
 </head>
 
 <body>
-  <section class="tabs">
-    <h1>Update Your Profile</h1>
-    <div class="profile-img">
-      <!-- <img width="100" height="100" src="../assets/img/profile.jpg" alt="profile"> -->
+    <section class="tabs">
+        <h1>Update Your Profile</h1>
+        <div class="profile-img">
+            <!-- <img width="100" height="100" src="../assets/img/profile.jpg" alt="profile"> -->
 
-      <?php
+            <?php
       require_once '../php/dbh.inc.php';
       $iid = $_SESSION["userid"];
       $sql = "SELECT * FROM users WHERE usersId ='$iid' ";
@@ -42,60 +42,60 @@
       }
       ?>
 
-    </div>
-    <div class="wrapper">
-      <div class="form">
-        <div class="title">Please fill to use upload image</div>
+        </div>
+        <div class="wrapper">
+            <div class="form">
+                <div class="title">Please fill to use upload image</div>
 
-        <form action="../php/img.inc.php" method="post">
-          <div class="inputfield">
-            <input type="text" name="uid" placeholder="Username" class="input">
-          </div>
-          <div class="inputfield">
-            <input type="password" name="pwd" placeholder="Password" class="input">
-          </div>
-          <div class="inputfield terms">
-            <label class="check">
-              <input type="checkbox" />
-              <span class="checkmark"></span>
-            </label>
-            <p>Agreed to terms and conditions</p>
-          </div>
-          <div class="inputfield">
-            <input type="submit" name="submit" class="btn btn-submit" />
-          </div>
-        </form>
+                <form action="../php/img.inc.php" method="post">
+                    <div class="inputfield">
+                        <input type="text" name="uid" placeholder="Username" class="input">
+                    </div>
+                    <div class="inputfield">
+                        <input type="password" name="pwd" placeholder="Password" class="input">
+                    </div>
+                    <div class="inputfield terms">
+                        <label class="check">
+                            <input type="checkbox" />
+                            <span class="checkmark"></span>
+                        </label>
+                        <p>Agreed to terms and conditions</p>
+                    </div>
+                    <div class="inputfield">
+                        <input type="submit" name="submit" class="btn btn-submit" />
+                    </div>
+                </form>
 
-        <form action="" method="post">
-          <div class="title" style="margin-top: 1em;">Change Uid</div>
-          <div class="inputfield">
-            <label>Your current uid:
-              <?php
+                <form action="" method="post">
+                    <div class="title" style="margin-top: 1em;">Change Uid</div>
+                    <div class="inputfield">
+                        <label>Your current uid:
+                            <?php
               if (isset($_SESSION["useruid"])) {
                 echo $_SESSION["useruid"];
               }
               ?>
-            </label>
-          </div>
-          <div class="inputfield">
-            <input type="text" name="uid" placeholder="Old Uid" class="input">
-          </div>
-          <div class="inputfield">
-            <input type="text" name="nid" placeholder="New Uid" class="input">
-          </div>
-          <div class="inputfield">
-            <input type="password" name="pwd" placeholder="Password" class="input">
-          </div>
-          <div class="inputfield">
-            <input type="submit" value="submit" class="btn btn-submit" />
-          </div>
-        </form>
+                        </label>
+                    </div>
+                    <div class="inputfield">
+                        <input type="text" name="uid" placeholder="Old Uid" class="input">
+                    </div>
+                    <div class="inputfield">
+                        <input type="text" name="nid" placeholder="New Uid" class="input">
+                    </div>
+                    <div class="inputfield">
+                        <input type="password" name="pwd" placeholder="Password" class="input">
+                    </div>
+                    <div class="inputfield">
+                        <input type="submit" value="submit" class="btn btn-submit" />
+                    </div>
+                </form>
 
 
 
 
 
-        <!-- <form action="" method="post">
+                <!-- <form action="" method="post">
           <div class="title" style="margin-top: 1em;">Change Email</div>
           <div class="inputfield">
             <label>Your current email:
@@ -120,7 +120,7 @@
           </div>
         </form> -->
 
-        <?php
+                <?php
         if (isset($_SESSION['useruid'])) {
           echo "<form action='../php/upload.php' method='POST' enctype='multipart/form-data'>
                 <div class='title' style='margin-top: 1em;'>Upload Image</div>
@@ -146,9 +146,9 @@
           echo "You are not logged in!";
         }
         ?>
-      </div>
-    </div>
-  </section>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>

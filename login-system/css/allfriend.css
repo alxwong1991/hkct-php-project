@@ -17,6 +17,13 @@ h1 {
   text-align: center;
   color: #232323;
 }
+
+:root {
+  --color: #ff5252;
+  --t-color: #575757;
+  --d-c: #2d3436;
+}
+
 .main_container {
   max-width: 450px;
   margin: 0 auto;
@@ -94,7 +101,7 @@ h1 {
 
 /* PROFILE.PHP */
 .profile_container {
-  margin: 0 auto;
+  margin: 8rem auto;
   max-width: 600px;
   background-color: #f8fafc;
   border: 1px solid rgba(23, 23, 23, 0.1);
@@ -162,7 +169,6 @@ h1 {
 }
 .active {
   outline: none;
-  background-color: #1f9d55 !important;
   color: #fff !important;
 }
 
@@ -215,15 +221,17 @@ h1 {
 }
 
 .see_profileBtn {
-  background-color: #794acf;
+  background-color: var(--d-c);
   border: 1px solid rgba(23, 23, 23, 0.1);
   color: #fff;
   font-size: 12px;
   padding: 3px 7px;
+  cursor: pointer;
   text-transform: uppercase;
 }
 .see_profileBtn:hover {
-  background-color: #382b5f;
+  background-color: var(--d-c);
+  background: #fff;
 }
 
 .actions {

@@ -28,10 +28,14 @@ $get_all_friends = $frnd_obj->get_all_friends($_SESSION['userid'], true);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo  $user_data->username; ?></title>
     <link rel="stylesheet" href="../css/allfriend.css">
+    <link rel="stylesheet" href="../css/profile.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 </head>
 
 <body>
+    <?php
+    require './profile-nav.php';
+    ?>
     <div class="profile_container">
 
         <div class="inner_profile">
@@ -70,9 +74,6 @@ $get_all_friends = $frnd_obj->get_all_friends($_SESSION['userid'], true);
                     echo '<h4>You have no friends!</h4>';
                 }
                 ?>
-
-
-
             </div>
         </div>
 

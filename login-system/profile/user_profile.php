@@ -30,6 +30,7 @@ $get_req_num = $frnd_obj->request_notification($_SESSION['userid'], false);
 // TOTAL FRIENDS
 $get_frnd_num = $frnd_obj->get_all_friends($_SESSION['userid'], false);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,10 +43,15 @@ $get_frnd_num = $frnd_obj->get_all_friends($_SESSION['userid'], false);
     echo '<title>usersId:' . $title . ' profile</title>'
     ?>
     <link rel="stylesheet" href="../css/allfriend.css">
+    <link rel="stylesheet" href="../css/profile.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 </head>
 
+
 <body>
+    <?php
+    require './profile-nav.php';
+    ?>
     <div class="profile_container">
 
         <div class="inner_profile">
@@ -56,6 +62,16 @@ $get_frnd_num = $frnd_obj->get_all_friends($_SESSION['userid'], false);
 
             </div>
             <h1><?php echo  $user_data->usersName; ?></h1>
+
+            <div class="left">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quisquam facilis delectus
+                    voluptate cum placeat ducimus nisi maiores totam ipsa voluptatibus molestias, odit dolorem excepturi
+                    necessitatibus quis at nulla maxime dolor voluptatum nesciunt. Illo atque ipsam aspernatur velit
+                    nostrum, excepturi omnis consequuntur ipsum, laboriosam quae ea eaque corrupti nisi ex.</p>
+            </div>
+            <div class="right">
+
+            </div>
             <nav>
                 <ul>
                     <li><a href="profile.php" rel="noopener noreferrer">Home</a></li>
@@ -83,14 +99,12 @@ $get_frnd_num = $frnd_obj->get_all_friends($_SESSION['userid'], false);
                     echo '<a href="frnd.inc.php?action=ignore_req&Id=' . $user_data->usersId . '" class="req_actionBtn ignoreRequest">Ignore</a>&nbsp;
                     <a href="frnd.inc.php?action=accept_req&Id=' . $user_data->usersId . '" class="req_actionBtn acceptRequest">Accept</a>';
                 } else {
-                    echo '<a href="frnd.inc.php?action=send_req&Id=' . $user_data->usersId . '" class="req_actionBtn sendRequest">Send Request</a>';
+                    echo '<a href="frnd.inc.php?action=send_req&Id=' . $user_data->usersId . '" class="req_actionBtn sendRequest btn">Send Request</a>';
                 }
                 ?>
 
             </div>
         </div>
-
-
     </div>
 </body>
 

@@ -147,7 +147,7 @@ error_reporting(0);
     </div>
 
 </body>
-<!-- <script src="../js/jquery.js"></script> -->
+<script src="../../js/jquery-3.3.1.min.js"></script>
 <script src="../js/profile.js"></script>
 
 </html>

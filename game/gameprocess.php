@@ -1,8 +1,7 @@
 <?php include "../login-system/php/dbh.inc.php" ?>
-<?php 
+<?php
 session_start();
 ?>
-
 
 <?php
 // score setting checking
@@ -27,8 +26,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $lq = $conn->query("SELECT COUNT(*)  AS total FROM `questions`");
         $data = mysqli_fetch_assoc($lq);
         $last = $data['total'];
-        if ($qn == $last) {
-            header('location:final.php');
+        $exit = $conn->query("SELECT * FROM `options` WHERE qno=$qn and correct=2");
+        $Exit = mysqli_fetch_assoc($exit);
+        $EXIT = $Exit['id'];
+        if ($qn == $last || $EXIT == $selected) {
+            $userid = $_SESSION['userid'];
+            date_default_timezone_set("Hongkong");
+            $recorder = date('Y-m-d H:i:s');
+            if ($qn == $last) {
+                $count = $conn->query("SELECT `no_of_play` FROM `ranking` WHERE `usersid`=$userid and `rankid` in ( SELECT MAX(`rankid`) FROM `ranking` GROUP BY `usersid`=$userid )");
+                $replay = mysqli_fetch_assoc($count);
+                $playcounter = $replay['no_of_play'];
+                if ($playcounter > 0) {
+                    $_SESSION['no_of_play'] = $playcounter + 1;
+                } else {
+                    $_SESSION['no_of_play']++;
+                }
+                header('location:final.php');
+            } else {
+                $insert = $conn->query("INSERT INTO `nosurvey` (usersid,qid,leavingtime) VALUES ($userid,$qn,'$recorder')");
+                header('location:exit.php');
+            }
         } else {
             header('location:question.php?n=' . $next);
         }

@@ -1,3 +1,19 @@
+<?php
+require './login-system/php/init.inc.php';
+if (isset($_SESSION['userid']) && isset($_SESSION['useremail'])) {
+    $user_data = $user_obj->find_user_by_id($_SESSION['userid']);
+    if ($user_data ===  false) {
+        header('Location:login-system/profile/profile.php');
+        exit;
+    }
+    // FETCH ALL USERS WHERE ID IS NOT EQUAL TO MY ID
+    $all_users = $user_obj->all_users($_SESSION['userid']);
+} else {
+    header('Location:profile.php?error=m1');
+    exit;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -255,6 +271,32 @@ require './header.php'
                                     </button></a>
                             </div>
                         </div>
+                        <?php
+                        if ($all_users) {
+                            foreach ($all_users as $row) {
+                                echo '
+                                    <div class="col-md-4 portfolio-thumbnail">
+                                    <div class="card" id="card">
+                                        <img src="./images/banner-3.jpeg" alt="Avatar" style="width: 100%" />
+                                        <img class="profile-image" src="./login-system/profile/upload/profile' . $row->usersId . '.jpg" alt="Avatar" />
+                                        <h4 class="text-style"><b>' . $row->usersId . '</b></h4>
+                                        <h4 class="text-style"><b>' . $row->usersName . '</b></h4>
+                                        <!-- <p class="text-style">Web Developer</p> -->
+                                        <button type="button" class="btn">
+                                            Add
+                                        </button>
+                                        <a href="#">
+                                            <button type="button" class="btn">
+                                                View
+                                            </button></a>
+                                    </div>
+                                    </div>
+                                    ';
+                            }
+                        } else {
+                            echo '<h4>There is no user!</h4>';
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

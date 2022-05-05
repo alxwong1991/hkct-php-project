@@ -39,7 +39,8 @@ if (isset($_GET["error"])) {
 <body>
     <?php
     $sql = "SELECT * FROM users;";
-    $result = mysqli_query($conn, $sql);
+    $sqlGamePoints = "SELECT * FROM users JOIN ranking on users.usersId = users.usersId order BY no_of_play ASC";
+    $result = mysqli_query($conn, $sqlGamePoints);
     $num = mysqli_num_rows($result);
     $rowcount = mysqli_num_rows($result);
     ?>
@@ -100,6 +101,7 @@ if (isset($_GET["error"])) {
                                         <th>Email</th>
                                         <th>UID</th>
                                         <th>Password</th>
+                                        <th>Number of play</th>
                                     </tr>
                                 </thead>
 
@@ -118,6 +120,7 @@ if (isset($_GET["error"])) {
                                                 <th>" . $data['usersEmail'] . "</th>
                                                 <th>" . $data['usersUid'] . "</th>
                                                 <th>" . $data['usersPwd'] . "</th>
+                                                <th>" . $data['no_of_play'] . "</th>
                                                 <th>
                                                 <a href='#editEmployeeModal' class='edit' data-toggle='modal'>
                                                     <i class='material-icons' data-toggle='tooltip'

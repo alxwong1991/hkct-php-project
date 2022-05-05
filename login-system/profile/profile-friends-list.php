@@ -40,16 +40,13 @@
                 <h3>All Users</h3>
                 <div class="usersWrapper">
                     <?php
-
-
-
                     if ($all_users) {
                         foreach ($all_users as $row) {
                             echo '<div class="user_box">
                                 
                                 <div class="user_img"><img src="./upload/profile' . $row->usersId . '.jpg" alt="Profile image"></div>
                                 <div class="user_info"><span>' . $row->usersName . '</span>
-                                <span><a href="user_profile.php?id=' . $row->usersId . '" class="see_profileBtn">See profile</a></div>
+                                <span><a href="user_profile.php?id=' . $row->usersId . '" class="see_profileBtn btn">See profile</a></div>
                             </div>';
                         }
                     } else {

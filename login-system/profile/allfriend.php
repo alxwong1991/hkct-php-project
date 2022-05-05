@@ -47,7 +47,7 @@ if (isset($_SESSION['userid']) && isset($_SESSION['useremail'])) {
                                 
                                 <div class="user_img"><img src="./upload/profile' . $row->usersId . '" alt="Profile image"></div>
                                 <div class="user_info"><span>' . $row->usersName . '</span>
-                                <span><a href="user_profile.php?id=' . $row->usersId . '" class="see_profileBtn">See profile</a></div>
+                                <span><a href="user_profile.php?id=' . $row->usersId . '" class="see_profileBtn btn">See profile</a></div>
                             </div>';
                     }
                 } else {
