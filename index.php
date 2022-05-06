@@ -123,93 +123,91 @@ if (isset($_GET["error"])) {
 
             <!-- Replace XML with a database and reorganize the PHP data connection in the final stage -->
             <!-- ::::::::::::::::::::::::::::::: Php & XML ::::::::::::::::::::::::::::::: -->
-            <div>
-                <?PHP
-                // $_SESSION["new_product"] = 0;
-                // $products_xml = simplexml_load_file('products_list.xml', null, true);
+            <div> <?PHP
+                    // $_SESSION["new_product"] = 0;
+                    // $products_xml = simplexml_load_file('products_list.xml', null, true);
 
-                // //  if $_POST["title"] NOT empty 
-                // if (!empty($_POST["title"])) {
-                //     $hasnewproduct = 0;
+                    // //  if $_POST["title"] NOT empty 
+                    // if (!empty($_POST["title"])) {
+                    //     $hasnewproduct = 0;
 
-                //     // Check from XML if data ( title || description ) already exists, $hasnewproduct++
-                //     foreach ($products_xml->product as $child) {
-                //         if ($child->title == $_POST["title"] || $child->description == $_POST["description"]) {
-                //             $hasnewproduct++;
-                //         }
-                //     }
+                    //     // Check from XML if data ( title || description ) already exists, $hasnewproduct++
+                    //     foreach ($products_xml->product as $child) {
+                    //         if ($child->title == $_POST["title"] || $child->description == $_POST["description"]) {
+                    //             $hasnewproduct++;
+                    //         }
+                    //     }
 
-                //     if ($hasnewproduct == 0) {
+                    //     if ($hasnewproduct == 0) {
 
-                //         if (isset($_FILES['fileToUpload'])) {
-                //             // file storage directory
-                //             $target_dir = "images/";
-                //             // file storage path
-                //             $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-                //             // upload status,
-                //             $uploadStatus = true;
-                //             //get file type, e.g. jpb, png
-                //             $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-                //             // Check if image file is a actual image or fake image
-                //             if (isset($_POST["submit"])) {
-                //                 $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-                //                 if ($check !== false) {
-                //                     $uploadStatus = true;
-                //                 } else {
-                //                     $uploadStatus = false;
-                //                 }
-                //             }
-                //             if (file_exists($target_file)) {
-                //                 $uploadStatus = false;
-                //             }
-                //             if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-                //                 $uploadStatus = false;
-                //             }
-                //             if ($uploadStatus) {
-                //                 move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
-                //                 $img = '"' . $target_file . '"';
-                //                 $newproduct = $products_xml->addChild('product');
+                    //         if (isset($_FILES['fileToUpload'])) {
+                    //             // file storage directory
+                    //             $target_dir = "images/";
+                    //             // file storage path
+                    //             $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+                    //             // upload status,
+                    //             $uploadStatus = true;
+                    //             //get file type, e.g. jpb, png
+                    //             $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+                    //             // Check if image file is a actual image or fake image
+                    //             if (isset($_POST["submit"])) {
+                    //                 $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                    //                 if ($check !== false) {
+                    //                     $uploadStatus = true;
+                    //                 } else {
+                    //                     $uploadStatus = false;
+                    //                 }
+                    //             }
+                    //             if (file_exists($target_file)) {
+                    //                 $uploadStatus = false;
+                    //             }
+                    //             if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                    //                 $uploadStatus = false;
+                    //             }
+                    //             if ($uploadStatus) {
+                    //                 move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
+                    //                 $img = '"' . $target_file . '"';
+                    //                 $newproduct = $products_xml->addChild('product');
 
-                //                 $pid = -1;
-                //                 foreach ($products_xml->product as $child) {
-                //                     $pid++;
-                //                 }
-                //                 $newproduct->addChild('pid', $pid);
+                    //                 $pid = -1;
+                    //                 foreach ($products_xml->product as $child) {
+                    //                     $pid++;
+                    //                 }
+                    //                 $newproduct->addChild('pid', $pid);
 
-                //                 $newproduct->addChild('title', $_POST["title"]);
-                //                 $newproduct->addChild('description', $_POST["description"]);
-                //                 $newproduct->addChild('price', $_POST["price"]);
-                //                 $newproduct->addChild('img', $img);
-                //                 $products_xml->saveXML('products_list.xml');
-                //             }
-                //         }
-                //     }
-                // }
+                    //                 $newproduct->addChild('title', $_POST["title"]);
+                    //                 $newproduct->addChild('description', $_POST["description"]);
+                    //                 $newproduct->addChild('price', $_POST["price"]);
+                    //                 $newproduct->addChild('img', $img);
+                    //                 $products_xml->saveXML('products_list.xml');
+                    //             }
+                    //         }
+                    //     }
+                    // }
 
-                // // Print out every Elemets with correct data
-                // $id = -1;
-                // foreach ($products_xml->product as $child) {
-                //     $pid = $child->pid;
-                //     $title = $child->title;
-                //     $description = $child->description;
-                //     $price = $child->price;
-                //     $img = $child->img;
+                    // // Print out every Elemets with correct data
+                    // $id = -1;
+                    // foreach ($products_xml->product as $child) {
+                    //     $pid = $child->pid;
+                    //     $title = $child->title;
+                    //     $description = $child->description;
+                    //     $price = $child->price;
+                    //     $img = $child->img;
 
-                //     $id++;
+                    //     $id++;
 
-                //     echo "<div class='card col-12 col-sm-6 col-md-4 col-lg-3 '>";
+                    //     echo "<div class='card col-12 col-sm-6 col-md-4 col-lg-3 '>";
 
-                //     echo "<a href='./shopping_detail.php?id=" . $id . "'>";
-                //     echo "<img src=" . $img . " class='card-img-top' alt='" . $title . "'>";
+                    //     echo "<a href='./shopping_detail.php?id=" . $id . "'>";
+                    //     echo "<img src=" . $img . " class='card-img-top' alt='" . $title . "'>";
 
-                //     echo "<h3 class='sci mb-5'>" . $title . "</h3>";
-                //     echo "<h3 class='sci mb-5'>" . $title . "</h3>";
+                    //     echo "<h3 class='sci mb-5'>" . $title . "</h3>";
+                    //     echo "<h3 class='sci mb-5'>" . $title . "</h3>";
 
-                //     echo "</a>";
-                //     echo "</div>";
-                // }
-                ?>
-            </div>
+                    //     echo "</a>";
+                    //     echo "</div>";
+                    // }
+                    ?></div>
             <!-- ::::::::::::::::::::::::::::::: Php & XML ::::::::::::::::::::::::::::::: -->
             <!-- Replace XML with a database and reorganize the PHP data connection in the final stage -->
 
@@ -238,7 +236,7 @@ if (isset($_GET["error"])) {
                 // List out all database product
                 echo "<div class='card col-12 col-sm-6 col-md-4 col-lg-3 '>";
                 echo "<a href='./product_detail.php?id=" . $id . "'>";
-                echo "<img src=" . $img . " class='card-img-top' alt='" . $title . "'>";
+                echo "<img src=images/" . $img . " class='card-img-top' alt='" . $title . "'>";
                 echo "<h3 class='sci mb-5'>" . $title .  "</h3>";
                 echo "</a>";
                 echo "</div>";
@@ -250,14 +248,14 @@ if (isset($_GET["error"])) {
         -->
         </div>
         <!-- container -->
-    </div>
-    <!-- ::::::::::::::::::::::::::::::: footer ::::::::::::::::::::::::::::::: -->
-    <div>
-        <?php
-        require "footer.php";
-        ?>
-    </div>
-    <!-- ::::::::::::::::::::::::::::::: footer ::::::::::::::::::::::::::::::: -->
+        </div>
+        <!-- ::::::::::::::::::::::::::::::: footer ::::::::::::::::::::::::::::::: -->
+        <div>
+            <?php
+            require "footer.php";
+            ?>
+        </div>
+        <!-- ::::::::::::::::::::::::::::::: footer ::::::::::::::::::::::::::::::: -->
 
 
 

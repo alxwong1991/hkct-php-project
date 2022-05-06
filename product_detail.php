@@ -154,7 +154,7 @@
 
                 // shopping bag layout : L
                 echo "<div class='col-12 col-sm-12 col-md-7 '>";
-                echo "<img src=" . $img . " class='card-img-top ' alt='" . $title . "'>";
+                echo "<img src=images/" . $img . " class='card-img-top ' alt='" . $title . "'>";
                 echo "</div>";
                 // shopping bag layout : R
                 echo "<div class='col-12 col-sm-12 col-md-5' id='setlayout'>";
@@ -244,7 +244,7 @@
 
                         echo "<div class=\"item mb-4\" style=\"margin :2rem\">";
                         echo "<a href='./product_detail.php?id=" . $id . "'>";
-                        echo "<img src=" . $img . " class='card-img-top' alt='' class='card-img'>";
+                        echo "<img src=images/" . $img . " class='card-img-top' alt='' class='card-img'>";
                         echo "</a>";
                         echo "</div>";
                     }

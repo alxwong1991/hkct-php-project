@@ -49,17 +49,26 @@ if (isset($_GET["error"])) {
 
         <div class="body-overlay"></div>
 
+        <!-------sidebar--design------------>
+
         <?php
-        require './admin-sidebar.php'
+        include './admin-sidebar.php'
         ?>
+        <!-------sidebar--design- close----------->
+
+
 
         <!-------page-content start----------->
 
         <div id="content">
 
+            <!------top-navbar-start----------->
+
             <?php
-            require './admin-header.php'
+            include './admin-header.php'
             ?>
+            <!------top-navbar-end----------->
+
 
             <!------main-content-start----------->
 
@@ -125,6 +134,7 @@ if (isset($_GET["error"])) {
 
 
                                             $sql = "SELECT * FROM `product`; ";
+
                                             $sql_result = $conn->query($sql);
                                             while ($row = mysqli_fetch_array($sql_result)) {
                                                 $pid = $row['p_id'];
@@ -151,6 +161,7 @@ if (isset($_GET["error"])) {
                                         style='font-size: 3rem; text-align:lift; color: rgba(163, 16, 25, 0.86)'>Edit
                                         Product</h1>
                                 </div>
+
 
                                 <!-- method post form   -->
                                 <form action="./o_order.php" method="GET">
@@ -235,7 +246,11 @@ if (isset($_GET["error"])) {
 
                                 <!-- method post form   -->
                                 <form action="./o_order.php" method="GET" enctype="multipart/form-data">
+                                    <button type="submit" style="display:none" name='action' value="add2">Save</button>
+                                </form>
 
+
+                                <form action="php-upload-process.php" method="post" enctype="multipart/form-data">
                                     <div class="modal-body">
 
                                         <!-- Product Brand -->
@@ -300,15 +315,13 @@ if (isset($_GET["error"])) {
                                         <input type="file" name="fileToUpload" id="fileToUpload" hidden>
                                         <span id="file-chosen">No file chosen</span>
                                     </div>
-
-
                                     <div class="modal-footer mx-auto">
 
 
+                                        <button type="submit" class="btn btn-success" value="Upload Image"
+                                            name="submit">Save</button>
+                                    </div>
 
-
-                                        <button type="submit" class="btn btn-success" name='action'
-                                            value="add2">Save</button>
                                 </form>
 
 
@@ -399,22 +412,30 @@ if (isset($_GET["error"])) {
 
                                         <button type="submit" class="btn btn-success" name='action'
                                             value="add2">Save</button>
-                                </form> <?php
-                                                    } else {
+                                </form>
 
 
-                                                        echo "                                                <div class=\"text-center mt-3\">
+
+                                <?php
+                                            } else {
+
+
+                                                echo "                                                <div class=\"text-center mt-3\">
                                                             <h1 lass='fw-bold m-3' style='font-size: 3rem; text-align:lift; color: rgba(163, 16, 25, 0.86)'>Add New Product Successfully</h1>
                                                         </div>";
 
-                                                        $sql = "INSERT INTO `product` (`p_brand`, `p_title`, `p_detail`, `p_size`, `p_color`,  `p_price`, `p_img`, `p_stock`) 
-                                                        Values ($apb, $apt, $apd, $aps, $apc, $app, '\"images/a5.jpg\"', $apq)";
+                                                // $sql = "INSERT INTO `product` (`p_brand`, `p_title`, `p_detail`, `p_size`, `p_color`,  `p_price`, `p_img`, `p_stock`) 
+                                                // Values ($apb, $apt, $apd, $aps, $apc, $app, '\"images/a5.jpg\"', $apq)";
 
-                                                        $sql_result = $conn->query($sql);
 
-                                                        $sql = "SELECT * FROM `product`; ";
+                                                $sql = "INSERT INTO `product` (`p_brand`, `p_title`, `p_detail`, `p_size`, `p_color`,  `p_price`, `p_img`, `p_stock`) 
+Values ($apb, $apt, $apd, $aps, $apc, $app, NULL, $apq)";
 
-                                                        echo "<table class=\"table table-striped table-hover\">
+                                                $sql_result = $conn->query($sql);
+
+                                                $sql = "SELECT * FROM `product`; ";
+
+                                                echo "<table class=\"table table-striped table-hover\">
                                                         <thead>
                                                             <tr>
                                                                 <th>ID</th>
@@ -430,10 +451,10 @@ if (isset($_GET["error"])) {
                                                         <tbody>";
 
 
-                                                        $sql_result = $conn->query($sql);
-                                                        while ($row = mysqli_fetch_array($sql_result)) {
-                                                            $pid = $row['p_id'];
-                                                            echo "
+                                                $sql_result = $conn->query($sql);
+                                                while ($row = mysqli_fetch_array($sql_result)) {
+                                                    $pid = $row['p_id'];
+                                                    echo "
                                     <tr>
                                     <th>" . $row['p_id'] . "</th>
                                     <th>" . $row['p_brand'] . "</th>
@@ -443,16 +464,16 @@ if (isset($_GET["error"])) {
                                     <th>" . $row['p_price'] . "</th>
                                     <th>" . $row['p_stock'] . "</th>
                                     </tr>";
-                                                        }
+                                                }
 
-                                                        echo                                            "</tbody>
+                                                echo                                            "</tbody>
 
 </table>";
-                                                    }
+                                            }
 
-                                                    break;
-                                                case "del":
-                                                        ?>
+                                            break;
+                                        case "del":
+                                            ?>
                                 <div class="text-center mt-3">
                                     <h1 lass='fw-bold m-3'
                                         style='font-size: 3rem; text-align:lift; color: rgba(163, 16, 25, 0.86)'>Delete
@@ -479,7 +500,7 @@ if (isset($_GET["error"])) {
                                 </form>
                                 <?php
 
-                                                    echo "<table class=\"table table-striped table-hover\">
+                                            echo "<table class=\"table table-striped table-hover\">
     <thead>
         <tr>
             <th>ID</th>
@@ -495,12 +516,12 @@ if (isset($_GET["error"])) {
     <tbody>";
 
 
-                                                    $sql = "SELECT * FROM `product`; ";
+                                            $sql = "SELECT * FROM `product`; ";
 
-                                                    $sql_result = $conn->query($sql);
-                                                    while ($row = mysqli_fetch_array($sql_result)) {
-                                                        $pid = $row['p_id'];
-                                                        echo "
+                                            $sql_result = $conn->query($sql);
+                                            while ($row = mysqli_fetch_array($sql_result)) {
+                                                $pid = $row['p_id'];
+                                                echo "
                                         <tr>
                                         <th>" . $row['p_id'] . "</th>
                                         <th>" . $row['p_brand'] . "</th>
@@ -510,20 +531,20 @@ if (isset($_GET["error"])) {
                                         <th>" . $row['p_price'] . "</th>
                                         <th>" . $row['p_stock'] . "</th>
                                         </tr>";
-                                                    }
+                                            }
 
-                                                    echo                                            "</tbody>
+                                            echo                                            "</tbody>
 
 </table>";
 
 
 
-                                                    break;
-                                                case "del2":
+                                            break;
+                                        case "del2":
 
-                                                    $dpid = $_GET['dpid'];
+                                            $dpid = $_GET['dpid'];
 
-                                                    if (empty($dpid)) { ?>
+                                            if (empty($dpid)) { ?>
                                 <div class="text-center mt-3">
                                     <h1 lass='fw-bold m-3'
                                         style='font-size: 3rem; text-align:lift; color: rgba(163, 16, 25, 0.86)'>Delete
@@ -550,7 +571,7 @@ if (isset($_GET["error"])) {
                                 </form>
                                 <?php
 
-                                                        echo "<table class=\"table table-striped table-hover\">
+                                                echo "<table class=\"table table-striped table-hover\">
     <thead>
         <tr>
             <th>ID</th>
@@ -566,12 +587,12 @@ if (isset($_GET["error"])) {
     <tbody>";
 
 
-                                                        $sql = "SELECT * FROM `product`; ";
+                                                $sql = "SELECT * FROM `product`; ";
 
-                                                        $sql_result = $conn->query($sql);
-                                                        while ($row = mysqli_fetch_array($sql_result)) {
-                                                            $pid = $row['p_id'];
-                                                            echo "
+                                                $sql_result = $conn->query($sql);
+                                                while ($row = mysqli_fetch_array($sql_result)) {
+                                                    $pid = $row['p_id'];
+                                                    echo "
                                         <tr>
                                         <th>" . $row['p_id'] . "</th>
                                         <th>" . $row['p_brand'] . "</th>
@@ -581,12 +602,12 @@ if (isset($_GET["error"])) {
                                         <th>" . $row['p_price'] . "</th>
                                         <th>" . $row['p_stock'] . "</th>
                                         </tr>";
-                                                        }
+                                                }
 
-                                                        echo                                            "</tbody>
+                                                echo                                            "</tbody>
 
 </table>";
-                                                    }
+                                            }
 
                                             ?>
 
@@ -600,11 +621,11 @@ if (isset($_GET["error"])) {
 
                                 <?php
 
-                                                    $sql = "DELETE FROM `product` WHERE `p_id` = $dpid";
+                                            $sql = "DELETE FROM `product` WHERE `p_id` = $dpid";
 
-                                                    $sql_result = $conn->query($sql);
+                                            $sql_result = $conn->query($sql);
 
-                                                    echo "<table class=\"table table-striped table-hover\">
+                                            echo "<table class=\"table table-striped table-hover\">
 <thead>
 <tr>
 <th>ID</th>
@@ -620,12 +641,12 @@ if (isset($_GET["error"])) {
 <tbody>";
 
 
-                                                    $sql = "SELECT * FROM `product`; ";
+                                            $sql = "SELECT * FROM `product`; ";
 
-                                                    $sql_result = $conn->query($sql);
-                                                    while ($row = mysqli_fetch_array($sql_result)) {
-                                                        $pid = $row['p_id'];
-                                                        echo "
+                                            $sql_result = $conn->query($sql);
+                                            while ($row = mysqli_fetch_array($sql_result)) {
+                                                $pid = $row['p_id'];
+                                                echo "
 <tr>
 <th>" . $row['p_id'] . "</th>
 <th>" . $row['p_brand'] . "</th>
@@ -635,20 +656,20 @@ if (isset($_GET["error"])) {
 <th>" . $row['p_price'] . "</th>
 <th>" . $row['p_stock'] . "</th>
 </tr>";
-                                                    }
+                                            }
 
-                                                    echo                                            "</tbody>
+                                            echo                                            "</tbody>
 
 </table>";
-                                                    break;
-                                                case "edit2":
+                                            break;
+                                        case "edit2":
 
 
-                                                    $epid = $_GET['epid'];
-                                                    $ePrice = $_GET['ep'];
-                                                    $eStock = $_GET['eq'];
+                                            $epid = $_GET['epid'];
+                                            $ePrice = $_GET['ep'];
+                                            $eStock = $_GET['eq'];
 
-                                                    if (empty($epid)) {
+                                            if (empty($epid)) {
                                             ?>
                                 <div class="text-center mt-3">
                                     <h1 lass='fw-bold m-3'
@@ -690,7 +711,7 @@ if (isset($_GET["error"])) {
 
                                 <?php
 
-                                                        echo "<table class=\"table table-striped table-hover\">
+                                                echo "<table class=\"table table-striped table-hover\">
     <thead>
         <tr>
             <th>ID</th>
@@ -706,12 +727,12 @@ if (isset($_GET["error"])) {
     <tbody>";
 
 
-                                                        $sql = "SELECT * FROM `product`; ";
+                                                $sql = "SELECT * FROM `product`; ";
 
-                                                        $sql_result = $conn->query($sql);
-                                                        while ($row = mysqli_fetch_array($sql_result)) {
-                                                            $pid = $row['p_id'];
-                                                            echo "
+                                                $sql_result = $conn->query($sql);
+                                                while ($row = mysqli_fetch_array($sql_result)) {
+                                                    $pid = $row['p_id'];
+                                                    echo "
                                         <tr>
                                         <th>" . $row['p_id'] . "</th>
                                         <th>" . $row['p_brand'] . "</th>
@@ -721,13 +742,13 @@ if (isset($_GET["error"])) {
                                         <th>" . $row['p_price'] . "</th>
                                         <th>" . $row['p_stock'] . "</th>
                                         </tr>";
-                                                        }
+                                                }
 
-                                                        echo                                            "</tbody>
+                                                echo                                            "</tbody>
 
 </table>"; ?>
                                 <?php
-                                                    } else {
+                                            } else {
 
                                             ?>
                                 <div class="text-center mt-3">
@@ -741,15 +762,15 @@ if (isset($_GET["error"])) {
                                 <?php
 
 
-                                                        // edit product
-                                                        $sql = "UPDATE `product` SET `p_price` = $ePrice , `p_stock` = $eStock WHERE `p_id` = $epid;";
+                                                // edit product
+                                                $sql = "UPDATE `product` SET `p_price` = $ePrice , `p_stock` = $eStock WHERE `p_id` = $epid;";
 
-                                                        // Execute sql
-                                                        $conn->query($sql);
+                                                // Execute sql
+                                                $conn->query($sql);
 
 
 
-                                                        echo "<table class=\"table table-striped table-hover\">
+                                                echo "<table class=\"table table-striped table-hover\">
                                                                 <thead>
                                                                     <tr>
                                                                         <th>ID</th>
@@ -765,12 +786,12 @@ if (isset($_GET["error"])) {
                                                                 <tbody>";
 
 
-                                                        $sql = "SELECT * FROM `product`; ";
+                                                $sql = "SELECT * FROM `product`; ";
 
-                                                        $sql_result = $conn->query($sql);
-                                                        while ($row = mysqli_fetch_array($sql_result)) {
-                                                            $pid = $row['p_id'];
-                                                            echo "
+                                                $sql_result = $conn->query($sql);
+                                                while ($row = mysqli_fetch_array($sql_result)) {
+                                                    $pid = $row['p_id'];
+                                                    echo "
                                                                                                     <tr>
                                                                                                     <th>" . $row['p_id'] . "</th>
                                                                                                     <th>" . $row['p_brand'] . "</th>
@@ -780,14 +801,14 @@ if (isset($_GET["error"])) {
                                                                                                     <th>" . $row['p_price'] . "</th>
                                                                                                     <th>" . $row['p_stock'] . "</th>
                                                                                                     </tr>";
-                                                        }
+                                                }
 
-                                                        echo                                            "</tbody>
+                                                echo                                            "</tbody>
                 
                                                             </table>";
-                                                    }
                                             }
-                                        }
+                                    }
+                                }
                                 ?>
                             </div>
 
@@ -806,7 +827,7 @@ if (isset($_GET["error"])) {
 
             <footer class="footer">
                 <?php
-                require '../../footer.php'
+                include '../../footer.php'
                 ?>
             </footer>
 

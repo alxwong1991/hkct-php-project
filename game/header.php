@@ -69,6 +69,11 @@ if (session_status() == PHP_SESSION_NONE) {
                             <h3 class="nav-titles">Game</h3>
                         </li>
                     </a>
+                    <a class="link-styles" href="../trend.php">
+                        <li class="list-styles">
+                            <h3 class="nav-titles">Trend</h3>
+                        </li>
+                    </a>
                     <?php
                     if (isset($_SESSION["useruid"])) {
                         echo "<a class='link-styles' href='../login-system/profile/profile.php'><li class='list-styles'><h3 class='nav-titles'>Profile</h3></li></a>";
@@ -115,6 +120,11 @@ if (session_status() == PHP_SESSION_NONE) {
             <a class="link-styles" href="./game.php">
                 <li class="list-styles">
                     <h3 class="nav-titles">Game</h3>
+                </li>
+            </a>
+            <a class="link-styles" href="../trend.php">
+                <li class="list-styles">
+                    <h3 class="nav-titles">Trend</h3>
                 </li>
             </a>
             <?php

@@ -43,6 +43,11 @@
                     <h3>Game</h3>
                 </li>
             </a>
+            <a href="../../trend.php">
+                <li>
+                    <h3>Trend</h3>
+                </li>
+            </a>
             <?php
             if (isset($_SESSION["useruid"])) {
                 echo "<a href='./profile.php'><li><h3>Profile</h3></li></a>";
@@ -86,6 +91,11 @@
         <a class="link-styles" href="../../game/game.php">
             <li class="list-styles">
                 <h3 class="nav-titles">Game</h3>
+            </li>
+        </a>
+        <a class="link-styles" href="../../trend.php">
+            <li class="list-styles">
+                <h3 class="nav-titles">Trend</h3>
             </li>
         </a>
         <?php

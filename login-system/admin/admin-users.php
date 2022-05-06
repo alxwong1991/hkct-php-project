@@ -39,8 +39,18 @@ if (isset($_GET["error"])) {
 <body>
     <?php
     $sql = "SELECT * FROM users;";
-    $sqlGamePoints = "SELECT * FROM users JOIN ranking on users.usersId = users.usersId order BY no_of_play ASC";
-    $result = mysqli_query($conn, $sqlGamePoints);
+    // $all = $conn->query("SELECT COUNT(*)  AS totalscore FROM `options` WHERE correct=1");
+    // $full = mysqli_fetch_assoc($all);
+    // $max = $full['totalscore'];
+
+    // $us = $conn->query("SELECT * FROM `ranking` where usersid = $userid and `rankid` in ( SELECT MAX(`rankid`) FROM `ranking` GROUP BY `usersid`=$userid )");
+    // $userscore = mysqli_fetch_assoc($us);
+    // $point = $userscore['score'];
+
+
+    $result = mysqli_query($conn, $sql);
+    // $result = mysqli_query($conn, $us);
+    // $result = mysqli_query($conn, $all);
     $num = mysqli_num_rows($result);
     $rowcount = mysqli_num_rows($result);
     ?>
@@ -101,7 +111,8 @@ if (isset($_GET["error"])) {
                                         <th>Email</th>
                                         <th>UID</th>
                                         <th>Password</th>
-                                        <th>Number of play</th>
+                                        <th>Score</th>
+                                        <th>No of tries</th>
                                     </tr>
                                 </thead>
 
@@ -120,7 +131,6 @@ if (isset($_GET["error"])) {
                                                 <th>" . $data['usersEmail'] . "</th>
                                                 <th>" . $data['usersUid'] . "</th>
                                                 <th>" . $data['usersPwd'] . "</th>
-                                                <th>" . $data['no_of_play'] . "</th>
                                                 <th>
                                                 <a href='#editEmployeeModal' class='edit' data-toggle='modal'>
                                                     <i class='material-icons' data-toggle='tooltip'

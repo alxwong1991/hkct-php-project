@@ -17,7 +17,7 @@
                     <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">product
                     </a>
                     <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                        <li><a href="./m_order.php">Management</a></li>
+                        <li><a href="./m_order.php">Product Management</a></li>
 
                     </ul>
                 </li>
@@ -40,15 +40,6 @@
                         <li><a href="../../game/administration.php">Edit Questions</a></li>
                     </ul>
                 </li>
-
-
-                <li class="">
-                    <a href="#" class="">copy </a>
-                </li>
-                <li class="">
-                    <a href="#" class="">calender </a>
-                </li>
-
             </ul>
         </div>
 

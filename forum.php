@@ -44,14 +44,12 @@ session_start();
                 </div>
                 <div class="form-group col-11">
                     <label for="content" style="margin:auto;">Content</label>
-                    <textarea id="content" rows="10" class="col-12" name="content" placeholder="Enter text"
-                        required="required"></textarea>
+                    <textarea id="content" rows="10" class="col-12" name="content" placeholder="Enter text" required="required"></textarea>
                 </div>
 
 
                 <div class="col-12 center">
-                    <button type="submit" class="btn btn-dark col-6 col-lg-4 col-md-6 col-sm-6 "
-                        style="margin:2rem auto;">Post</button>
+                    <button type="submit" class="btn btn-dark col-6 col-lg-4 col-md-6 col-sm-6 " style="margin:2rem auto;">Post</button>
                 </div>
 
 
@@ -77,15 +75,14 @@ session_start();
                     <div class="modal-header p-5 pb-4 border-bottom-0">
                         <h2 class="fw-bold mb-0" style="font-size: 3rem; color: #FEFEFE">Delete Post</h2>
                         <!-- btn : X -->
-                        <button onclick="dp_off()" type="button" class="close" aria-label="Close"
-                            style="width:3vh;height:6vh;border:none;background-color:transparent;">
+                        <button onclick="dp_off()" type="button" class="close" aria-label="Close" style="width:3vh;height:6vh;border:none;background-color:transparent;">
                             <span aria-hidden="true" style="font-size: 2rem;">×</span>
                         </button>
 
                         <script>
-                        function dp_off() {
-                            document.getElementById("overlay2").style.display = "none";
-                        }
+                            function dp_off() {
+                                document.getElementById("overlay2").style.display = "none";
+                            }
                         </script>
                         <!-- btn : X -->
                     </div>
@@ -99,15 +96,13 @@ session_start();
 
                             <!-- // ID -->
                             <div class="form-floating mb-3">
-                                <input type="text" name="p_id" class="form-control rounded-4" id="floatingInput"
-                                    required="required">
+                                <input type="text" name="p_id" class="form-control rounded-4" id="floatingInput" required="required">
                                 <label for="floatingInput">Post ID</label>
                             </div>
 
 
                             <!-- // delete Product  -->
-                            <button class="w-100 mb-2 btn btn-lg rounded-4 btn-dark nav-color" type="submit"
-                                name="delete">Delete Product</button>
+                            <button class="w-100 mb-2 btn btn-lg rounded-4 btn-dark nav-color" type="submit" name="delete">Delete Product</button>
 
                         </form>
                     </div>
@@ -127,20 +122,17 @@ session_start();
 
 
     <!-- Start of auto create -->
-    <div class="row col-9 row-cols-sm-1" style="margin:auto; font-size: 16px!important; margin: 10rem auto;"
-        id="auto-create">
+    <div class="row col-9 row-cols-sm-1" style="margin:auto; font-size: 16px!important; margin: 10rem auto;" id="auto-create">
 
         <div class="misc row">
 
-            <button class="col-3 btn-dark" style="border:2px solid #e8e8e8; height: 3rem; margin:auto;"
-                onclick="on()">Post</button>
-            <button class="col-3 btn-dark" style="border:2px solid #e8e8e8; height: 3rem; margin:auto; display:none;"
-                onclick="dp_on()" id="deletePost">Delete Post</button>
+            <button class="col-3 btn-dark" style="border:2px solid #e8e8e8; height: 3rem; margin:auto;" onclick="on()">Post</button>
+            <button class="col-3 btn-dark" style="border:2px solid #e8e8e8; height: 3rem; margin:auto; display:none;" onclick="dp_on()" id="deletePost">Delete Post</button>
 
             <script>
-            function dp_on() {
-                document.getElementById("overlay2").style.display = "block";
-            }
+                function dp_on() {
+                    document.getElementById("overlay2").style.display = "block";
+                }
             </script>
             <!-- delete Product BTN :  display flex, center -->
 
@@ -158,7 +150,7 @@ session_start();
                     $sqlImg = "SELECT * FROM profileimg WHERE userid = '$id'";
                     $resultImg = mysqli_query($conn, $sqlImg);
                     $rowImg = mysqli_fetch_assoc($resultImg);
-                    $admin = "admin";
+                    $admin = "Louie9";
                     if ($_SESSION["useruid"] == $admin) {
                         echo '
                         <script>
@@ -428,41 +420,41 @@ session_start();
     <script src="./header.js"></script>
 
     <script>
-    $(document).on("click", '.like-btn', function() {
-        var likeID = $(this).attr("id");
-        event.preventDefault();
-        $.ajax({
-            url: "fetch_like.php",
-            type: "POST",
-            data: {
-                like: likeID
-            },
-            success: function(like) {
-                $("#likeid" + likeID).text(like);
-            }
-        });
+        $(document).on("click", '.like-btn', function() {
+            var likeID = $(this).attr("id");
+            event.preventDefault();
+            $.ajax({
+                url: "fetch_like.php",
+                type: "POST",
+                data: {
+                    like: likeID
+                },
+                success: function(like) {
+                    $("#likeid" + likeID).text(like);
+                }
+            });
 
 
-        /*var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                fetchLike(this, likeID);
-            }
-        };
-        xhttp.open("GET", "forum.xml", true );
-        xhttp.send();*/
+            /*var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fetchLike(this, likeID);
+                }
+            };
+            xhttp.open("GET", "forum.xml", true );
+            xhttp.send();*/
 
 
-    })
+        })
 
-    /*
-            function fetchLike(xml, likeID) {
-                var xmlDoc = xml.responseXML;
-                var like = document.getElementById("likeid" + likeID);
-                var x = xmlDoc.getElementsByTagName("post");
-                console.log(x[likeID].getElementsByTagName("like")[0].innerHTML);
-                like.textContent = x[likeID].getElementsByTagName("like")[0].innerHTML;
-            }*/
+        /*
+                function fetchLike(xml, likeID) {
+                    var xmlDoc = xml.responseXML;
+                    var like = document.getElementById("likeid" + likeID);
+                    var x = xmlDoc.getElementsByTagName("post");
+                    console.log(x[likeID].getElementsByTagName("like")[0].innerHTML);
+                    like.textContent = x[likeID].getElementsByTagName("like")[0].innerHTML;
+                }*/
     </script>
 </body>
 
