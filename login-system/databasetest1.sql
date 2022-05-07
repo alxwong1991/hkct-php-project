@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2022 at 01:34 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.12
+-- Generation Time: May 07, 2022 at 12:23 AM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -20,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `databasetest1`
 --
+CREATE DATABASE IF NOT EXISTS `databasetest1` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `databasetest1`;
 
 -- --------------------------------------------------------
 
@@ -27,14 +28,16 @@ SET time_zone = "+00:00";
 -- Table structure for table `cart_list`
 --
 
-CREATE TABLE `cart_list` (
+DROP TABLE IF EXISTS `cart_list`;
+CREATE TABLE IF NOT EXISTS `cart_list` (
   `usersId` int(11) DEFAULT NULL,
-  `c_id` int(11) NOT NULL,
+  `c_id` int(11) NOT NULL AUTO_INCREMENT,
   `c_state` varchar(255) DEFAULT NULL,
   `p_id` int(11) NOT NULL,
   `c_quantity` int(11) DEFAULT NULL,
-  `c_total` decimal(8,2) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `c_total` decimal(8,2) DEFAULT NULL,
+  PRIMARY KEY (`c_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cart_list`
@@ -59,10 +62,12 @@ INSERT INTO `cart_list` (`usersId`, `c_id`, `c_state`, `p_id`, `c_quantity`, `c_
 -- Table structure for table `friends`
 --
 
-CREATE TABLE `friends` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `friends`;
+CREATE TABLE IF NOT EXISTS `friends` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_one` int(11) NOT NULL,
-  `user_two` int(11) NOT NULL
+  `user_two` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -71,10 +76,12 @@ CREATE TABLE `friends` (
 -- Table structure for table `friend_request`
 --
 
-CREATE TABLE `friend_request` (
+DROP TABLE IF EXISTS `friend_request`;
+CREATE TABLE IF NOT EXISTS `friend_request` (
   `sender` int(11) NOT NULL,
   `receiver` int(11) NOT NULL,
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -83,19 +90,14 @@ CREATE TABLE `friend_request` (
 -- Table structure for table `nosurvey`
 --
 
-CREATE TABLE `nosurvey` (
-  `Exitid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `nosurvey`;
+CREATE TABLE IF NOT EXISTS `nosurvey` (
+  `Exitid` int(11) NOT NULL AUTO_INCREMENT,
   `usersid` int(11) NOT NULL,
   `Qid` int(11) NOT NULL,
-  `leavingtime` datetime NOT NULL
+  `leavingtime` datetime NOT NULL,
+  PRIMARY KEY (`Exitid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `nosurvey`
---
-
-INSERT INTO `nosurvey` (`Exitid`, `usersid`, `Qid`, `leavingtime`) VALUES
-(1, 2, 1, '2022-05-05 16:55:45');
 
 -- --------------------------------------------------------
 
@@ -103,12 +105,15 @@ INSERT INTO `nosurvey` (`Exitid`, `usersid`, `Qid`, `leavingtime`) VALUES
 -- Table structure for table `options`
 --
 
-CREATE TABLE `options` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `options`;
+CREATE TABLE IF NOT EXISTS `options` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `qno` int(11) NOT NULL,
   `correct` tinyint(1) NOT NULL,
-  `choices` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `choices` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `options`
@@ -140,15 +145,18 @@ INSERT INTO `options` (`id`, `qno`, `correct`, `choices`) VALUES
 -- Table structure for table `order`
 --
 
-CREATE TABLE `order` (
-  `o_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `order`;
+CREATE TABLE IF NOT EXISTS `order` (
+  `o_id` int(11) NOT NULL AUTO_INCREMENT,
   `usersId` int(11) DEFAULT NULL,
   `o_name` varchar(255) NOT NULL,
   `o_price` double(9,2) NOT NULL,
   `o_destination` varchar(255) NOT NULL,
   `o_contactNumber` varchar(20) NOT NULL,
-  `o_datetime` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `o_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`o_id`),
+  KEY `usersId` (`usersId`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order`
@@ -165,8 +173,9 @@ INSERT INTO `order` (`o_id`, `usersId`, `o_name`, `o_price`, `o_destination`, `o
 -- Table structure for table `product`
 --
 
-CREATE TABLE `product` (
-  `p_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE IF NOT EXISTS `product` (
+  `p_id` int(11) NOT NULL AUTO_INCREMENT,
   `p_brand` varchar(255) NOT NULL,
   `p_title` varchar(255) NOT NULL,
   `p_detail` varchar(255) NOT NULL,
@@ -174,8 +183,9 @@ CREATE TABLE `product` (
   `p_color` varchar(255) NOT NULL DEFAULT 'unique',
   `p_price` decimal(8,2) NOT NULL,
   `p_img` varchar(255) DEFAULT NULL,
-  `p_stock` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `p_stock` int(11) NOT NULL,
+  PRIMARY KEY (`p_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
@@ -197,10 +207,12 @@ INSERT INTO `product` (`p_id`, `p_brand`, `p_title`, `p_detail`, `p_size`, `p_co
 -- Table structure for table `profileimg`
 --
 
-CREATE TABLE `profileimg` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `profileimg`;
+CREATE TABLE IF NOT EXISTS `profileimg` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` varchar(128) NOT NULL,
-  `zt` varchar(128) NOT NULL
+  `zt` varchar(128) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -209,12 +221,14 @@ CREATE TABLE `profileimg` (
 -- Table structure for table `pwdreset`
 --
 
-CREATE TABLE `pwdreset` (
-  `pwdResetId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `pwdreset`;
+CREATE TABLE IF NOT EXISTS `pwdreset` (
+  `pwdResetId` int(11) NOT NULL AUTO_INCREMENT,
   `pwdResetEmail` text NOT NULL,
   `pwdResetSelector` text NOT NULL,
   `pwdResetToken` longtext NOT NULL,
-  `pwdResetExpires` text NOT NULL
+  `pwdResetExpires` text NOT NULL,
+  PRIMARY KEY (`pwdResetId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -223,10 +237,13 @@ CREATE TABLE `pwdreset` (
 -- Table structure for table `questions`
 --
 
-CREATE TABLE `questions` (
-  `qno` int(11) NOT NULL,
-  `question` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `questions`;
+CREATE TABLE IF NOT EXISTS `questions` (
+  `qno` int(11) NOT NULL AUTO_INCREMENT,
+  `question` varchar(255) NOT NULL,
+  PRIMARY KEY (`qno`),
+  UNIQUE KEY `qno` (`qno`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `questions`
@@ -245,23 +262,15 @@ INSERT INTO `questions` (`qno`, `question`) VALUES
 -- Table structure for table `ranking`
 --
 
-CREATE TABLE `ranking` (
-  `rankid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `ranking`;
+CREATE TABLE IF NOT EXISTS `ranking` (
+  `rankid` int(11) NOT NULL AUTO_INCREMENT,
   `usersid` int(11) NOT NULL,
-  `no_of_play` int(11) DEFAULT 0,
-  `score` int(11) DEFAULT 0,
-  `finishedtime` datetime NOT NULL
+  `no_of_play` int(11) DEFAULT '0',
+  `score` int(11) DEFAULT '0',
+  `finishedtime` datetime NOT NULL,
+  PRIMARY KEY (`rankid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `ranking`
---
-
-INSERT INTO `ranking` (`rankid`, `usersid`, `no_of_play`, `score`, `finishedtime`) VALUES
-(1, 2, 1, 2, '2022-05-05 16:56:18'),
-(2, 1, 1, 2, '2022-05-05 16:57:00'),
-(3, 2, 2, 2, '2022-05-05 16:57:37'),
-(4, 2, 3, 2, '2022-05-05 20:59:38');
 
 -- --------------------------------------------------------
 
@@ -269,13 +278,15 @@ INSERT INTO `ranking` (`rankid`, `usersid`, `no_of_play`, `score`, `finishedtime
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `usersId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `usersId` int(11) NOT NULL AUTO_INCREMENT,
   `usersName` varchar(128) NOT NULL,
   `usersEmail` varchar(128) NOT NULL,
   `usersUid` varchar(128) NOT NULL,
-  `usersPwd` varchar(128) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `usersPwd` varchar(128) NOT NULL,
+  PRIMARY KEY (`usersId`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -283,150 +294,6 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`usersId`, `usersName`, `usersEmail`, `usersUid`, `usersPwd`) VALUES
 (1, 'Louie9', 'Louie9@gmail.com', 'Louie9', '123');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `cart_list`
---
-ALTER TABLE `cart_list`
-  ADD PRIMARY KEY (`c_id`);
-
---
--- Indexes for table `friends`
---
-ALTER TABLE `friends`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `friend_request`
---
-ALTER TABLE `friend_request`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `nosurvey`
---
-ALTER TABLE `nosurvey`
-  ADD PRIMARY KEY (`Exitid`);
-
---
--- Indexes for table `options`
---
-ALTER TABLE `options`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `order`
---
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`o_id`),
-  ADD KEY `usersId` (`usersId`);
-
---
--- Indexes for table `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`p_id`);
-
---
--- Indexes for table `profileimg`
---
-ALTER TABLE `profileimg`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `pwdreset`
---
-ALTER TABLE `pwdreset`
-  ADD PRIMARY KEY (`pwdResetId`);
-
---
--- Indexes for table `questions`
---
-ALTER TABLE `questions`
-  ADD PRIMARY KEY (`qno`),
-  ADD UNIQUE KEY `qno` (`qno`);
-
---
--- Indexes for table `ranking`
---
-ALTER TABLE `ranking`
-  ADD PRIMARY KEY (`rankid`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`usersId`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `cart_list`
---
-ALTER TABLE `cart_list`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
-
---
--- AUTO_INCREMENT for table `friends`
---
-ALTER TABLE `friends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `friend_request`
---
-ALTER TABLE `friend_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `options`
---
-ALTER TABLE `options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `order`
---
-ALTER TABLE `order`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `product`
---
-ALTER TABLE `product`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- AUTO_INCREMENT for table `profileimg`
---
-ALTER TABLE `profileimg`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pwdreset`
---
-ALTER TABLE `pwdreset`
-  MODIFY `pwdResetId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `questions`
---
-ALTER TABLE `questions`
-  MODIFY `qno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `usersId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

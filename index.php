@@ -18,10 +18,12 @@ if (isset($_GET["error"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 
     <link href="css/footer.css" rel="stylesheet">
@@ -30,39 +32,39 @@ if (isset($_GET["error"])) {
 
 
     <style>
-        /* carousel */
-        .carousel-item {
-            height: 50rem;
-            background: #000;
-            color: white;
-            position: relative;
+    /* carousel */
+    .carousel-item {
+        height: 50rem;
+        background: #000;
+        color: white;
+        position: relative;
 
-        }
+    }
 
-        .carousel_container {
-            margin: 3rem;
-            position: absolute;
-            bottom: 0;
-            right: 0;
+    .carousel_container {
+        margin: 3rem;
+        position: absolute;
+        bottom: 0;
+        right: 0;
 
-        }
+    }
 
-        .carousel-image {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            top: 0;
-            background-position: center;
-            background-size: cover;
-            opacity: 0.5;
-        }
+    .carousel-image {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        background-position: center;
+        background-size: cover;
+        opacity: 0.5;
+    }
 
 
-        .card:hover {
-            border: 1px solid #00838d;
+    .card:hover {
+        border: 1px solid #00838d;
 
-        }
+    }
     </style>
 
 </head>
@@ -88,7 +90,8 @@ if (isset($_GET["error"])) {
         <div class="row">
 
             <!-- Bootstrap Carousel  -->
-            <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" style="padding-right: 0;padding-left:0;">
+            <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel"
+                style="padding-right: 0;padding-left:0;">
 
                 <div class="carousel-inner">
                     <!--  Carousel item start ( Class = "active" )  -->
@@ -123,7 +126,8 @@ if (isset($_GET["error"])) {
 
             <!-- Replace XML with a database and reorganize the PHP data connection in the final stage -->
             <!-- ::::::::::::::::::::::::::::::: Php & XML ::::::::::::::::::::::::::::::: -->
-            <div> <?PHP
+            <div>
+                <?PHP
                     // $_SESSION["new_product"] = 0;
                     // $products_xml = simplexml_load_file('products_list.xml', null, true);
 
@@ -207,7 +211,8 @@ if (isset($_GET["error"])) {
                     //     echo "</a>";
                     //     echo "</div>";
                     // }
-                    ?></div>
+                    ?>
+            </div>
             <!-- ::::::::::::::::::::::::::::::: Php & XML ::::::::::::::::::::::::::::::: -->
             <!-- Replace XML with a database and reorganize the PHP data connection in the final stage -->
 
@@ -231,7 +236,7 @@ if (isset($_GET["error"])) {
                 $price  = $row['p_price'];
                 $img  = $row['p_img'];
             ?>
-                <!-- database SQL -->
+            <!-- database SQL -->
             <?php
                 // List out all database product
                 echo "<div class='card col-12 col-sm-6 col-md-4 col-lg-3 '>";
@@ -248,14 +253,14 @@ if (isset($_GET["error"])) {
         -->
         </div>
         <!-- container -->
-        </div>
-        <!-- ::::::::::::::::::::::::::::::: footer ::::::::::::::::::::::::::::::: -->
-        <div>
-            <?php
-            require "footer.php";
-            ?>
-        </div>
-        <!-- ::::::::::::::::::::::::::::::: footer ::::::::::::::::::::::::::::::: -->
+    </div>
+    <!-- ::::::::::::::::::::::::::::::: footer ::::::::::::::::::::::::::::::: -->
+    <div>
+        <?php
+        require "footer.php";
+        ?>
+    </div>
+    <!-- ::::::::::::::::::::::::::::::: footer ::::::::::::::::::::::::::::::: -->
 
 
 

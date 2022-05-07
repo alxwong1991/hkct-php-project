@@ -111,8 +111,8 @@ if (isset($_GET["error"])) {
                                         <th>Email</th>
                                         <th>UID</th>
                                         <th>Password</th>
-                                        <th>Score</th>
-                                        <th>No of tries</th>
+                                        <!-- <th>Score</th>
+                                        <th>No of tries</th> -->
                                     </tr>
                                 </thead>
 
@@ -169,15 +169,6 @@ if (isset($_GET["error"])) {
                                     <li class="page-item "><a href="#" class="page-link">Next</a></li>
                                 </ul>
                             </div>
-
-
-
-
-
-
-
-
-
                         </div>
                     </div>
 

@@ -44,7 +44,6 @@ if (session_status() == PHP_SESSION_NONE) {
                 </a>
                 <?php
                 if (isset($_SESSION["useruid"])) {
-                    echo "<a class='link-styles' href='../friendList.php'><li class='list-styles'><h3 class='nav-titles'>Friends</h3></li></a>";
                     echo "<a class='link-styles' href='../game/game.php'><li class='list-styles'><h3 class='nav-titles'>Game</h3></li></a>";
                     echo "<a class='link-styles' href='../trend.php'><li class='list-styles'><h3 class='nav-titles'>Trend</h3></li></a>";
                 }
@@ -91,7 +90,6 @@ if (session_status() == PHP_SESSION_NONE) {
         </a>
         <?php
         if (isset($_SESSION["useruid"])) {
-            echo "<a class='link-styles' href='../friendList.php'><li class='list-styles'><h3 class='nav-titles'>Friends</h3></li></a>";
             echo "<a class='link-styles' href='../game/game.php'><li class='list-styles'><h3 class='nav-titles'>Game</h3></li></a>";
         } else {
             echo "<a class='link-styles' href='./login-register.php'><li class='list-styles'><h3 class='nav-titles'>Login</h3></li></a>";

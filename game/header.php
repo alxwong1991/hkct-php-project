@@ -59,11 +59,6 @@ if (session_status() == PHP_SESSION_NONE) {
                             <h3 class="nav-titles">Forum</h3>
                         </li>
                     </a>
-                    <a class="link-styles" href="../friendList.php">
-                        <li class="list-styles">
-                            <h3 class="nav-titles">Friends</h3>
-                        </li>
-                    </a>
                     <a class="link-styles" href="./game.php">
                         <li class="list-styles">
                             <h3 class="nav-titles">Game</h3>
@@ -110,11 +105,6 @@ if (session_status() == PHP_SESSION_NONE) {
             <a class="link-styles" href="../forum.php">
                 <li class="list-styles">
                     <h3 class="nav-titles">Forum</h3>
-                </li>
-            </a>
-            <a class="link-styles" href="../friendList.php">
-                <li class="list-styles">
-                    <h3 class="nav-titles">Friends</h3>
                 </li>
             </a>
             <a class="link-styles" href="./game.php">
