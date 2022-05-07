@@ -16,6 +16,9 @@ if (isset($_GET["error"])) {
     } else if ($_GET["error"] == "none") {
         echo "<script>alert('You have sign up!')</script>";
     }
+     else if ($_GET["error"] == "acessdeny") {
+        echo "<script>alert('Your access has been denial! Contact our staff to progress!')</script>";
+    }
 }
 
 // sign-in

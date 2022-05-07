@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include_once '../php/dbh.inc.php';
 if (isset($_GET["error"])) {
     if ($_GET["error"] == "youarenotAdmin!") {
@@ -39,14 +40,6 @@ if (isset($_GET["error"])) {
 <body>
     <?php
     $sql = "SELECT * FROM users;";
-    // $all = $conn->query("SELECT COUNT(*)  AS totalscore FROM `options` WHERE correct=1");
-    // $full = mysqli_fetch_assoc($all);
-    // $max = $full['totalscore'];
-
-    // $us = $conn->query("SELECT * FROM `ranking` where usersid = $userid and `rankid` in ( SELECT MAX(`rankid`) FROM `ranking` GROUP BY `usersid`=$userid )");
-    // $userscore = mysqli_fetch_assoc($us);
-    // $point = $userscore['score'];
-
 
     $result = mysqli_query($conn, $sql);
     // $result = mysqli_query($conn, $us);
@@ -111,8 +104,8 @@ if (isset($_GET["error"])) {
                                         <th>Email</th>
                                         <th>UID</th>
                                         <th>Password</th>
-                                        <!-- <th>Score</th>
-                                        <th>No of tries</th> -->
+                                        <th>Score</th>
+                                        <th>No of tries</th>
                                     </tr>
                                 </thead>
 
@@ -121,16 +114,22 @@ if (isset($_GET["error"])) {
                                     <?php
                                     if ($num > 0) {
                                         while ($data = mysqli_fetch_assoc($result)) {
+                                            $userid = $data['usersId'];
+                                            $us = $conn->query("SELECT * FROM `ranking` where usersid = $userid and `rankid` in ( SELECT MAX(`rankid`) FROM `ranking` GROUP BY `usersid`=$userid )");
+                                            $userscore = mysqli_fetch_assoc($us);
                                             echo "
                                                 <tr>
                                                 <th><span class='custom-checkbox'>
                                                         <input type='checkbox' id='checkbox1' name='option[]' value='1'>
-                                                        <label for='checkbox1'></label></th>
+                                                        <label for='checkbox1'></label>
+                                                        </th>
                                                 <th>" . $data['usersId'] . "</th>
                                                 <th>" . $data['usersName'] . "</th>
                                                 <th>" . $data['usersEmail'] . "</th>
                                                 <th>" . $data['usersUid'] . "</th>
                                                 <th>" . $data['usersPwd'] . "</th>
+                                                <th>" . $userscore['score'] . "</th>
+                                                <th>" . $userscore['no_of_play'] . "</th>
                                                 <th>
                                                 <a href='#editEmployeeModal' class='edit' data-toggle='modal'>
                                                     <i class='material-icons' data-toggle='tooltip'
@@ -169,6 +168,15 @@ if (isset($_GET["error"])) {
                                     <li class="page-item "><a href="#" class="page-link">Next</a></li>
                                 </ul>
                             </div>
+
+
+
+
+
+
+
+
+
                         </div>
                     </div>
 

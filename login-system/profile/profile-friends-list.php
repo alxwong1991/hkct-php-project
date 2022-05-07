@@ -42,9 +42,21 @@
                     <?php
                     if ($all_users) {
                         foreach ($all_users as $row) {
-                            echo '<div class="user_box">
+                            $sql = "SELECT * FROM users WHERE usersId ='$row->usersId' ";
+                            $result = mysqli_query($conn, $sql);
+                            $sqlImg = "SELECT * FROM profileimg WHERE userid = '$row->usersId'";
+                            $resultImg = mysqli_query($conn, $sqlImg);
+                            $rowImg = mysqli_fetch_assoc($resultImg);
+                            echo '<div class="user_box">';
+                                if ($rowImg['zt'] == 0) {
                                 
-                                <div class="user_img"><img src="./upload/profile' . $row->usersId . '.jpg" alt="Profile image"></div>
+                                echo'<div class="user_img"><img src="./upload/profile' . $row->usersId . '.jpg" alt="Profile image"></div>';}
+                                else{
+                                    
+                                    echo'<div class="user_img"><img src="./upload/pro.jpg" alt="Profile image"></div>';
+                                }
+                                
+                                echo'
                                 <div class="user_info"><span>' . $row->usersName . '</span>
                                 <span><a href="user_profile.php?id=' . $row->usersId . '" class="see_profileBtn btn">See profile</a></div>
                             </div>';

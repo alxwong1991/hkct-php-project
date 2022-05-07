@@ -39,10 +39,7 @@ if (isset($_POST['add'])) {
             if ($value != '') {
                 if ($correct_answer == $choices) {
                     $correct = 1;
-                } else {
-                    $correct = 0;
-                }
-                if ($quit_choice == $choices) {
+                } elseif ($quit_choice == $choices) {
                     $correct = 2;
                 } else {
                     $correct = 0;

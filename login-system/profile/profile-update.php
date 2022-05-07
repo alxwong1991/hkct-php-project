@@ -66,7 +66,7 @@
                     </div>
                 </form>
 
-                <form action="" method="post">
+                <form action="../php/changeUid.inc.php" method="post">
                     <div class="title" style="margin-top: 1em;">Change Uid</div>
                     <div class="inputfield">
                         <label>Your current uid:

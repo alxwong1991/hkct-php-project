@@ -100,14 +100,18 @@ if (isset($_GET["error"])) {
                                         <th>Email</th>
                                         <th>UID</th>
                                         <th>Password</th>
+                                        <th>Status</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
 
 
                                 <tbody>
                                     <?php
+                                    
                                     if ($num > 0) {
                                         while ($data = mysqli_fetch_assoc($result)) {
+                                            $thisID=$data['usersId'];
                                             echo "
                                                 <tr>
                                                 <th><span class='custom-checkbox'>
@@ -118,6 +122,28 @@ if (isset($_GET["error"])) {
                                                 <th>" . $data['usersEmail'] . "</th>
                                                 <th>" . $data['usersUid'] . "</th>
                                                 <th>" . $data['usersPwd'] . "</th>
+                                                <th>" . $data['usersStatus'] . "</th>
+                                                <th>" ;
+                                                echo'<form action ="../php/status.php"  method="post">
+                                                <input type="hidden" name="id" value="'.$thisID.'" >';
+                                                
+                                                if($data['usersStatus']==0){
+                                                echo $thisID.'
+                                                     <input type="submit" name="ban" value="ban user"/></br>
+                                                    <input type="submit" name="admin" value="make admin"/>
+                                                ';}
+                                                else if($data['usersStatus']==-1){
+                                                echo'<input type="submit" name="free" value="free user"/>
+                                                <input type="submit" name="deny" value="deny access"/>'
+                                                ;    
+                                                }
+                                                else if($data['usersStatus']==99){
+                                                    echo'Admin
+                                                    ';
+                                                }
+                                                   
+                                                echo'</form></th>';
+                                                echo"
                                                 <th>
                                                 <a href='#editEmployeeModal' class='edit' data-toggle='modal'>
                                                     <i class='material-icons' data-toggle='tooltip'

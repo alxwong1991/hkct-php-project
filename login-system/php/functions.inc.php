@@ -71,16 +71,15 @@ $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
 function createUser($conn, $name, $email, $username, $pwd)
 {
-    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES ('$name', '$email', '$username', '$pwd');";
+    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd,usersStatus) VALUES ('$name', '$email', '$username', '$pwd',0);";
     $qresult = mysqli_query($conn, $sql);
-    /*$stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt,$sql)){
-        header("location:../login-register.php?error=stmtfailed");
-        exit();
-    }
-    mysqli_stmt_bind_param($stmt,"ssss",$name,$email,$username,$hashedPwd);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);*/
+    $isql="SELECT *FROM users WHERE usersName='$name' ";
+    $Iresult=mysqli_query($conn, $isql);
+    $row = mysqli_fetch_assoc($Iresult);
+    $imgusid = $row['usersId'];
+    $sqli = "INSERT INTO profileimg (userid,zt) VALUES ('$imgusid',1);";
+    mysqli_query($conn, $sqli);
+    
     header("location:../login-register.php?error=none");
     exit();
 }
@@ -107,8 +106,13 @@ function loginUser($conn, $username, $pwd)
     if ($uidExists == false) {
         header("location:../login-register.php?error=wronglogin");
     }
+    
 
     $checkPwd = ($pwd == $uidExists["usersPwd"]);
+    if($uidExists["usersStatus"]==-99){
+        header("location:../login-register.php?error=acessdeny");
+    }
+    else{
 
     if ($checkPwd === false) {
         header("location:../login-register.php?error=wrongPassword");
@@ -117,9 +121,11 @@ function loginUser($conn, $username, $pwd)
         $_SESSION["userid"] = $uidExists["usersId"];
         $_SESSION["useruid"] = $uidExists["usersUid"];
         $_SESSION["useremail"] = $uidExists["usersEmail"];
+        $_SESSION["userstatus"] = $uidExists["usersStatus"];
         header("location:../profile/profile.php");
         exit();
     }
+}
 }
 
 // signin  //////////////////////////////////

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2022 at 12:23 AM
+-- Generation Time: May 07, 2022 at 05:00 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -286,14 +286,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `usersUid` varchar(128) NOT NULL,
   `usersPwd` varchar(128) NOT NULL,
   PRIMARY KEY (`usersId`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`usersId`, `usersName`, `usersEmail`, `usersUid`, `usersPwd`) VALUES
-(1, 'Louie9', 'Louie9@gmail.com', 'Louie9', '123');
+(1, 'Louie9', 'Louie9@gmail.com', 'Louie9', '123'),
+(2, 'Loathing', 'pinky@gmail.com', 'loathing', '123');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

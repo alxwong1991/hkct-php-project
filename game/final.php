@@ -20,7 +20,8 @@ require './surveyheader.php';
             date_default_timezone_set("Hongkong");
             $recorder = date('Y-m-d H:i:s');
             $insert = $conn->query("INSERT INTO `ranking` (usersid,no_of_play,score,finishedtime) VALUES ($userid,$no_of_play,$score,'$recorder')");
-            $us = $conn->query("SELECT * FROM `ranking` where usersid = $userid and `rankid` in ( SELECT MAX(`rankid`) FROM `ranking` GROUP BY `usersid`=$userid )");
+            $us = $conn->query("SELECT * FROM `ranking` where usersid = $userid and `rankid` in 
+                                                ( SELECT MAX(`rankid`) FROM `ranking` GROUP BY `usersid`=$userid )");
             $userscore = mysqli_fetch_assoc($us);
             $point = $userscore['score'];
             echo  $point . ' out of ' . $max;
